@@ -1,5 +1,8 @@
 #include "Node.h"
 
+#include <stdio.h>
+#include <stdlib.h>
+
 /*
  * Function that allocates memory and creates a node 
  * given a symbol and frequncy (ie. Constructor)
@@ -28,7 +31,37 @@ Node* node_create(uint8_t symbol, uint64_t frequency)
  * Function that acts as a destructor for node by 
  * deallocating memory and sets the pointer to NULL
  */
- Node* node_delete(Node** node)
+void node_delete(Node** node)
  {
+     free(node);
      
+     node = NULL;
+ }
+
+/*
+ *
+ *
+ */
+Node* node_join(Node* left, Node* right)
+{
+    return NULL;
+}
+
+/*
+ *
+ *
+ */
+ void node_print(Node* node)
+ {
+    node = NULL;
+    printf("Node print");
+ }
+
+/*
+ *
+ *
+ */
+ int returnOne()
+ {
+    return 1;
  }
