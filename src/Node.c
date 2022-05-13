@@ -13,7 +13,7 @@ Node* node_create(uint8_t symbol, uint64_t frequency)
     Node* node = NULL;
 
     // Allocate memory
-    node = malloc(sizeof(Node));
+    node = (Node*)malloc(sizeof(Node));
 
     // Error check
     if (node == NULL)
@@ -24,6 +24,10 @@ Node* node_create(uint8_t symbol, uint64_t frequency)
     node->symbol = symbol;
     node->frequency = frequency;
 
+    // Assign left and right to NULL
+    node->leftChild = NULL;
+    node->rightChild = NULL;
+
     return node;
 }
 
@@ -33,9 +37,8 @@ Node* node_create(uint8_t symbol, uint64_t frequency)
  */
 void node_delete(Node** node)
  {
-     free(node);
-     
-     node = NULL;
+    free(*node);
+    *node = NULL;
  }
 
 /*
@@ -44,7 +47,9 @@ void node_delete(Node** node)
  */
 Node* node_join(Node* left, Node* right)
 {
-    return NULL;
+    // TODO: Implement (following code is a place holder)
+    left = right;
+    return left;
 }
 
 /*
@@ -53,8 +58,8 @@ Node* node_join(Node* left, Node* right)
  */
  void node_print(Node* node)
  {
-    node = NULL;
-    printf("Node print");
+    // TODO: Implement (following code is a place holder)
+    printf("symbol: %d, frequency %ld", node->symbol, node->frequency);
  }
 
 /*
