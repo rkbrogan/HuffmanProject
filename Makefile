@@ -39,6 +39,8 @@ STACK := -fstack-protector-all -Wstack-protector
 # Specifies to GCC the required warnings
 WARNS := -Wall -Wextra -pedantic # -pedantic warns on language standards
 
+TEST_WARNS := -Wno-unused-parameter
+
 # Flags for compiling
 CFLAGS := -O3 $(STD) $(STACK) $(WARNS)
 
@@ -118,7 +120,7 @@ valgrind:
 # Compile tests and run the test binary
 tests:
 	@echo -en "$(BROWN)CC $(END_COLOR)";
-	$(CC) $(EXTDIR)/munit/munit.c $(SRCDIR)/*.$(SRCEXT) $(TESTDIR)/*.$(SRCEXT) -o $(BINDIR)/$(TEST_BINARY) $(DEBUG) $(CFLAGS) $(LIBS) $(TEST_LIBS)
+	$(CC) $(TEST_WARNS) $(EXTDIR)/munit/munit.c $(SRCDIR)/*.$(SRCEXT) $(TESTDIR)/*.$(SRCEXT) -o $(BINDIR)/$(TEST_BINARY) $(DEBUG) $(CFLAGS) $(LIBS) $(TEST_LIBS)
 	@which ldconfig && ldconfig -C /tmp/ld.so.cache || true # caching the library linking
 	@echo -en "$(BROWN) Running tests: $(END_COLOR)";
 	./$(BINDIR)/$(TEST_BINARY)

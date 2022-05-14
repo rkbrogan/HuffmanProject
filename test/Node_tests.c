@@ -8,7 +8,7 @@
 
 #define TEST(name) { (char*)#name, name, NULL, NULL, MUNIT_TEST_OPTION_NONE, NULL }
 
-static MunitResult initialize_node()
+static MunitResult initialize_node(const MunitParameter params[], void* data)
 {
     uint8_t symbol = 1;
     uint64_t frequency = 10;
@@ -21,16 +21,7 @@ static MunitResult initialize_node()
     return MUNIT_OK;
 }
 
-static MunitResult confirm_returnOne()
-{
-    int result = returnOne();
-
-    munit_assert_int(result, ==, 1);
-
-    return MUNIT_OK;
-}
-
-static MunitResult destroy_node()
+static MunitResult destroy_node(const MunitParameter params[], void* data)
 {
     // Arrange
     Node* n = NULL;
@@ -47,7 +38,7 @@ static MunitResult destroy_node()
     return MUNIT_OK;
 }
 
-static MunitResult join_nodes()
+static MunitResult join_nodes(const MunitParameter params[], void* data)
 {
     // TODO Figure out how nodes_join works and implement this correctly
     uint8_t leftSymbol = '1';
@@ -78,7 +69,6 @@ static MunitResult join_nodes()
 MunitTest node_tests[] =
 {
     TEST(initialize_node),
-    TEST(confirm_returnOne),
     TEST(destroy_node),
     TEST(join_nodes),
     {NULL}

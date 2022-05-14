@@ -48,7 +48,8 @@ void node_delete(Node** node)
 Node* node_join(Node* left, Node* right)
 {
     // TODO: Implement (following code is a place holder)
-    left = right;
+    left->symbol = '$';
+    left->frequency = left->frequency + right->frequency;
     return left;
 }
 

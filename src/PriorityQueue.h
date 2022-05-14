@@ -1,16 +1,22 @@
 #pragma once
 #ifndef PRIORITYQUEUE_H
-#define PRIORITYQUEUE_H
+#define PRIORITYQUEUE_H 
 
 #include "Node.h"
 
+#include <stdbool.h>
 #include <stdint.h>
+#include <stdlib.h>
 
 typedef struct PriorityQueue_ PriorityQueue;
 
 typedef struct PriorityQueue_ 
 {
-
+    uint32_t size;        // Size of the array
+    uint32_t capacity;    // Number of elements that have been allocated
+    Node* front;
+    Node* rear;
+    Node** nodes;
 } PriorityQueue;
 
 /* Functions */
