@@ -64,7 +64,7 @@ static MunitResult join_nodes(const MunitParameter params[], void* data)
 
     return MUNIT_OK;
 }
-
+ 
 // List of tests
 MunitTest node_tests[] =
 {
