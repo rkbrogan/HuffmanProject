@@ -13,9 +13,11 @@ BINARY := huff
 OS := $(shell uname -s)
 
 # Source code directory structure
+DIRS   := DataStructures Encoder Decoder
 BINDIR := bin
 SRCDIR := src
 LOGDIR := log
+INCDIR := include
 LIBDIR := libs
 EXTDIR := externals
 TESTDIR := test
@@ -42,24 +44,28 @@ WARNS := -Wall -Wextra -pedantic # -pedantic warns on language standards
 TEST_WARNS := -Wno-unused-parameter
 
 # Flags for compiling
-CFLAGS := -O3 $(STD) $(STACK) $(WARNS)
+CFLAGS := -O3 $(STD) $(STACK) $(WARNS) -I$(INCDIR)
 
 # Debug options
 DEBUG := -g3 -DDEBUG=1
 
+# Dependency files
+DEPS := $(INCDIR)
+
 # Dependency libraries
-LIBS := -lm  -Ilib
+LIBS := -Ilib
 
 # Test libraries
-TEST_LIBS := -lm -Iexternals/munit -Isrc
+TEST_LIBS := -I$(EXTDIR)/munit
 
 # Tests binary file
 TEST_BINARY := $(BINARY)_test_runner
 
-
+# Source files
+SRC_FILES := $(wildcard $(dir) $(SRCDIR)/*/*.c)
 
 # %.o file names
-NAMES := $(notdir $(basename $(wildcard $(SRCDIR)/*.$(SRCEXT))))
+NAMES := $(notdir $(basename $(wildcard $(SRCDIR)/$(SRC_FILES))))
 OBJECTS :=$(patsubst %,$(LIBDIR)/%.o,$(NAMES))
 
 
@@ -80,6 +86,7 @@ help:
 	@echo "    valgrind - Runs binary file using valgrind tool"
 	@echo "    clean    - Clean the project by removing binaries"
 	@echo "    help     - Prints a help message with target rules"
+
 
 # Starts a new project using C project template
 start:
@@ -106,6 +113,7 @@ $(LIBDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@echo -en "$(BROWN)CC $(END_COLOR)";
 	$(CC) -c $^ -o $@ $(DEBUG) $(CFLAGS) $(LIBS)
 
+
 # Rule for run valgrind tool
 valgrind:
 	valgrind \
@@ -119,8 +127,9 @@ valgrind:
 
 # Compile tests and run the test binary
 tests:
+	@echo SRC_FILES $(SRC_FILES);
 	@echo -en "$(BROWN)CC $(END_COLOR)";
-	$(CC) $(TEST_WARNS) $(EXTDIR)/munit/munit.c $(SRCDIR)/*.$(SRCEXT) $(TESTDIR)/*.$(SRCEXT) -o $(BINDIR)/$(TEST_BINARY) $(DEBUG) $(CFLAGS) $(LIBS) $(TEST_LIBS)
+	$(CC) $(TEST_WARNS) $(EXTDIR)/munit/munit.c $(SRC_FILES) $(TESTDIR)/*.$(SRCEXT) -o $(BINDIR)/$(TEST_BINARY) $(DEBUG) $(CFLAGS) $(LIBS) $(TEST_LIBS)
 	@which ldconfig && ldconfig -C /tmp/ld.so.cache || true # caching the library linking
 	@echo -en "$(BROWN) Running tests: $(END_COLOR)";
 	./$(BINDIR)/$(TEST_BINARY)
