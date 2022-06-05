@@ -8,8 +8,6 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-typedef struct PriorityQueue_ PriorityQueue;
-
 typedef struct PriorityQueue_ 
 {
     uint32_t size;        // Size of the array
@@ -25,8 +23,8 @@ PriorityQueue* pq_create(uint32_t capacity);
 void pq_delete(PriorityQueue** pq);
 void pq_print(PriorityQueue *pq);
 
-bool pq_empty(PriorityQueue* pq);
-bool pq_full(PriorityQueue* pq);
+bool pq_isEmpty(PriorityQueue* pq);
+bool pq_isFull(PriorityQueue* pq);
 bool enqueue(PriorityQueue* pq, Node* n);
 bool dequeue(PriorityQueue* pq, Node **n);
 

@@ -21,7 +21,4 @@ Node*   node_join(Node* left, Node* right);
 void    node_delete(Node **node);
 void    node_print(Node *node);
 
-/* Test Functions */
-int returnOne();
-
 #endif // NODE_H
