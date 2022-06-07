@@ -1,15 +1,17 @@
 #include "PriorityQueue.h"
 
+#include <assert.h>
 
-// PriorityQueue* pq_create(uint32_t capacity)
-// {
+PriorityQueue* pq_create(uint32_t capacity)
+{
+    return NULL;
+}
 
-// }
-
-// void pq_delete(PriorityQueue** pq)
-// {
-
-// }
+void pq_delete(PriorityQueue** pq)
+{
+    assert(pq);
+    *pq = NULL;
+}
 
 // void pq_print(PriorityQueue *pq)
 // {

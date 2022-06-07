@@ -7,37 +7,45 @@
 
 static MunitResult pq_create_capacity_of_ten(const MunitParameter params[], void* data)
 {
-    return MUNIT_OK;
+    uint32_t capacity = 10;
+    PriorityQueue* pq = pq_create(capacity);
+
+    munit_assert_not_null(pq);
+    munit_assert_int(capacity, ==, pq->capacity);
+
+    pq_delete(&pq);
+    
+    return MUNIT_FAIL;
 }
 
 static MunitResult delete_pq(const MunitParameter params[], void* data)
 {
-    return MUNIT_OK;
+    return MUNIT_FAIL;
 }
 
 static MunitResult is_pq_empty(const MunitParameter params[], void* data)
 {
-    return MUNIT_OK;
+    return MUNIT_FAIL;
 }
 
 static MunitResult is_pq_full(const MunitParameter params[], void* data)
 {
-    return MUNIT_OK;
+    return MUNIT_FAIL;
 }
 
 static MunitResult pq_enqueue(const MunitParameter params[], void* data)
 {
-    return MUNIT_OK;
+    return MUNIT_FAIL;
 }
 
 static MunitResult pq_dequeue(const MunitParameter params[], void* data)
 {
-    return MUNIT_OK;
+    return MUNIT_FAIL;
 }
 
 static MunitResult pq_get_size(const MunitParameter params[], void* data)
 {
-    return MUNIT_OK;
+    return MUNIT_FAIL;
 }
 
 MunitTest priorityQueue_tests[] =
