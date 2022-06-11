@@ -1,6 +1,7 @@
 #include "PriorityQueue.h"
 
 #include <assert.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 PriorityQueue* pq_create(uint32_t capacity)
@@ -10,13 +11,9 @@ PriorityQueue* pq_create(uint32_t capacity)
 
     pq->capacity = capacity;
     pq->size = 0;
+    pq->head = NULL;
 
-    Node* node = node_create(0, 0);
-    pq->nodes = malloc(sizeof(Node*) * capacity);
-    assert(pq->nodes != NULL);
-
-    // TODO: Initialize the array of nodes
-
+    return pq;
 }
 
 void pq_delete(PriorityQueue** pq)
@@ -29,45 +26,105 @@ void pq_print(PriorityQueue *pq)
 {
     assert(pq);
 
-    for(uint32_t i = 0; i < pq->capacity; i++)
+    // Walk through queue and print each node's character.
+    Node* current = pq->head;
+    while (current != NULL)
     {
-        if(pq->nodes[i] != NULL)
-        {
-            node_print(pq->nodes[i]);
-        }
+        printf("%c ", current->symbol);
+        current = current->rightChild;
     }
 }
 
 
-bool pq_empty(PriorityQueue* pq)
+bool pq_isEmpty(PriorityQueue* pq)
 {
     return pq->size == 0;
 }
 
-bool pq_full(PriorityQueue* pq)
+bool pq_isFull(PriorityQueue* pq)
 {
     return pq->size == pq->capacity;
 }
 
 
-bool enqueue(PriorityQueue* pq, Node* n)
+bool pq_enqueue(PriorityQueue* pq, Node* n)
 {
     assert(pq);
 
-    if (pq_full(pq))
+    bool result = false;
+
+    if (!pq_isFull(pq))
     {
-        return false;
+        // Loop through queue until we find a node with a higher frequency.
+        Node* current = pq->head;
+        Node* previous = NULL;
+        while (current != NULL && current->frequency < n->frequency)
+        {
+            previous = current;
+            current = current->rightChild;
+        }
+
+        // If we found a node with a higher frequency, insert the new node before it.
+        if (current != NULL)
+        {
+            n->leftChild = current->leftChild;
+            n->rightChild = current;
+            current->leftChild = n;
+        }
+        else    // Insert new node at the end
+        {
+            n->leftChild = NULL;
+            n->rightChild = NULL;
+
+            if (previous != NULL)
+            {
+                previous->rightChild = n;
+            }
+        }
+
+        // If the head is NULL, the new node is the head.
+        if (pq->head == NULL)
+        {
+            pq->head = n;
+        }
+
+        // Increment the size of the queue.
+        pq->size++;
+        
+        result = true;
     }
 
-    // TODO: Finish implementing this function
+    return result;
 }
 
-// bool dequeue(PriorityQueue* pq, Node **n)
-// {
+bool pq_dequeue(PriorityQueue* pq, Node **n)
+{
+    assert(pq);
+    assert(n);
 
-// }
+    bool result = false;
+
+    if (!pq_isEmpty(pq))
+    {
+        // Get head of priority queue
+        *n = pq->head;
+
+        // Set new head of priority queue
+        pq->head = pq->head->rightChild;
+
+        // Decrement size of priority queue
+        pq->size--;
+
+        // Set result to true
+        result = true;
+    }
+
+    return result;
+}
 
 uint32_t pq_size(PriorityQueue *pq)
 {
     return pq->size;
 }
+
+// TODO: Implement PQ as a min-heap
