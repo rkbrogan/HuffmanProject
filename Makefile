@@ -129,7 +129,7 @@ valgrind:
 tests:
 	@echo SRC_FILES $(SRC_FILES);
 	@echo -en "$(BROWN)CC $(END_COLOR)";
-	$(CC) $(TEST_WARNS) $(EXTDIR)/munit/munit.c $(SRC_FILES) $(TESTDIR)/*.$(SRCEXT) -o $(BINDIR)/$(TEST_BINARY) $(DEBUG) $(CFLAGS) $(LIBS) $(TEST_LIBS)
+	$(CC) $(TEST_WARNS) $(EXTDIR)/munit/munit.c -DMUNIT_TEST_NAME_LEN=53 $(SRC_FILES) $(TESTDIR)/*.$(SRCEXT) -o $(BINDIR)/$(TEST_BINARY) $(DEBUG) $(CFLAGS) $(LIBS) $(TEST_LIBS)
 	@which ldconfig && ldconfig -C /tmp/ld.so.cache || true # caching the library linking
 	@echo -en "$(BROWN) Running tests: $(END_COLOR)";
 	./$(BINDIR)/$(TEST_BINARY)

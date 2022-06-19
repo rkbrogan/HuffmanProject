@@ -62,12 +62,3 @@ Node* node_join(Node* left, Node* right)
     // TODO: Implement (following code is a place holder)
     printf("symbol: %d, frequency %ld", node->symbol, node->frequency);
  }
-
-/*
- *
- *
- */
- int returnOne()
- {
-    return 1;
- }

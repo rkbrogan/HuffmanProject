@@ -41,6 +41,7 @@ bool pq_isEmpty(PriorityQueue* pq)
     return pq->size == 0;
 }
 
+
 bool pq_isFull(PriorityQueue* pq)
 {
     return pq->size == pq->capacity;
@@ -58,6 +59,7 @@ bool pq_enqueue(PriorityQueue* pq, Node* n)
         // Loop through queue until we find a node with a higher frequency.
         Node* current = pq->head;
         Node* previous = NULL;
+    
         while (current != NULL && current->frequency < n->frequency)
         {
             previous = current;
@@ -97,15 +99,18 @@ bool pq_enqueue(PriorityQueue* pq, Node* n)
     return result;
 }
 
+// TODO: Check if this is correct (lines 117-121)
 bool pq_dequeue(PriorityQueue* pq, Node **n)
 {
     assert(pq);
-    assert(n);
 
     bool result = false;
 
     if (!pq_isEmpty(pq))
     {
+        assert(n);
+        assert(*n);
+
         // Get head of priority queue
         *n = pq->head;
 
@@ -121,6 +126,7 @@ bool pq_dequeue(PriorityQueue* pq, Node **n)
 
     return result;
 }
+
 
 uint32_t pq_size(PriorityQueue *pq)
 {

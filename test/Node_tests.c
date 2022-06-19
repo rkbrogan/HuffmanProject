@@ -87,5 +87,6 @@ MunitTest node_tests[] =
     TEST(initialize_node),
     TEST(destroy_node),
     TEST(join_nodes),
+    TEST(node_create_test),
     {NULL}
 };
