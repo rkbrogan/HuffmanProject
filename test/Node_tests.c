@@ -65,6 +65,22 @@ static MunitResult join_nodes(const MunitParameter params[], void* data)
     return MUNIT_OK;
 }
 
+// Test 1: Initialize a node with a symbol and frequency
+static MunitResult node_create_test(const MunitParameter params[], void* data)
+{
+    // Arrange
+    uint8_t symbol = '1';
+    uint64_t frequency = 10;
+
+    // Act
+    Node* n = node_create(symbol, frequency);
+
+    // Assert
+    munit_assert_not_null(n);
+
+    return MUNIT_OK;
+}
+
 // List of tests
 MunitTest node_tests[] =
 {
