@@ -245,6 +245,7 @@ static MunitResult pq_full_capacity_of_one_after_enqueue(const MunitParameter pa
     return MUNIT_OK;
 }
 
+// Test 18: Dequeue a priority queue with a capacity of two
 static MunitResult pq_dequeue_capacity_of_two(const MunitParameter params[], void* data)
 {
     PriorityQueue* pq = pq_create(2);
@@ -260,9 +261,67 @@ static MunitResult pq_dequeue_capacity_of_two(const MunitParameter params[], voi
 
     pq_dequeue(pq, &temp);
 
-    munit_assert_uint32(temp->frequency, ==, 1);
+    munit_assert_uint64(temp->frequency, ==, 1);
     
     munit_assert_uint32(pq->size, ==, 1);
+
+    return MUNIT_OK;
+}
+
+// Test 19: Dequeue a priority queue with a capacity of four
+static MunitResult pq_dequeue_capacity_of_four_in_order(const MunitParameter params[], void* data)
+{
+    PriorityQueue* pq = pq_create(4);
+    munit_assert_not_null(pq);
+
+    Node* node1 = node_create('1', 1);
+    Node* node2 = node_create('2', 2);
+    Node* node3 = node_create('3', 3);
+    Node* node4 = node_create('4', 4);
+
+    pq_enqueue(pq, node1);
+    pq_enqueue(pq, node2);
+    pq_enqueue(pq, node3);
+    pq_enqueue(pq, node4);
+
+    Node* temp;
+
+    pq_dequeue(pq, &temp);
+
+    munit_assert_uint64(temp->frequency, ==, 1);
+    munit_assert_uint32(temp->symbol, ==, '1');
+
+    munit_assert_uint32(pq->size, ==, 3);
+
+    return MUNIT_OK;
+}
+
+// Test 20: Dequeue a priority queue with a capacity of four (reverse order)
+// TODO: This test fails
+static MunitResult pq_dequeue_capacity_of_four_in_reverse_order(const MunitParameter params[], void* data)
+{
+    PriorityQueue* pq = pq_create(4);
+    munit_assert_not_null(pq);
+
+    Node* node1 = node_create('1', 1);
+    Node* node2 = node_create('2', 2);
+    Node* node3 = node_create('3', 3);
+    Node* node4 = node_create('4', 4);
+
+    // Enqueue reverse order
+    pq_enqueue(pq, node4);
+    pq_enqueue(pq, node3);
+    pq_enqueue(pq, node2);
+    pq_enqueue(pq, node1);
+
+    Node* temp;
+
+    pq_dequeue(pq, &temp);
+
+    munit_assert_uint64(temp->frequency, ==, 1);
+    munit_assert_uint32(temp->symbol, ==, '1');
+
+    munit_assert_uint32(pq->size, ==, 3);
 
     return MUNIT_OK;
 }
@@ -291,5 +350,7 @@ MunitTest priorityQueue_tests[] =
     TEST(pq_full_capacity_of_hundred),
     TEST(pq_full_capacity_of_one_after_enqueue),
     TEST(pq_dequeue_capacity_of_two),
+    TEST(pq_dequeue_capacity_of_four_in_order),
+    TEST(pq_dequeue_capacity_of_four_in_reverse_order),
     {NULL}
 };

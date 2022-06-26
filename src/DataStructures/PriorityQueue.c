@@ -47,7 +47,7 @@ bool pq_isFull(PriorityQueue* pq)
     return pq->size == pq->capacity;
 }
 
-
+// TODO: Fix this function. It is currently a doubly linked list
 bool pq_enqueue(PriorityQueue* pq, Node* n)
 {
     assert(pq);
