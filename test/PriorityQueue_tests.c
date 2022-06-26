@@ -245,6 +245,28 @@ static MunitResult pq_full_capacity_of_one_after_enqueue(const MunitParameter pa
     return MUNIT_OK;
 }
 
+static MunitResult pq_dequeue_capacity_of_two(const MunitParameter params[], void* data)
+{
+    PriorityQueue* pq = pq_create(2);
+    munit_assert_not_null(pq);
+
+    Node* node1 = node_create('1', 1);
+    Node* node2 = node_create('2', 2);
+
+    pq_enqueue(pq, node1);
+    pq_enqueue(pq, node2);
+
+    Node* temp;
+
+    pq_dequeue(pq, &temp);
+
+    munit_assert_uint32(temp->frequency, ==, 1);
+    
+    munit_assert_uint32(pq->size, ==, 1);
+
+    return MUNIT_OK;
+}
+
 
 // TODO: Write tests for enqueue and dequeue
 // TODO: Write tests for pq_size
@@ -268,5 +290,6 @@ MunitTest priorityQueue_tests[] =
     TEST(pq_full_capacity_of_ten),
     TEST(pq_full_capacity_of_hundred),
     TEST(pq_full_capacity_of_one_after_enqueue),
+    TEST(pq_dequeue_capacity_of_two),
     {NULL}
 };

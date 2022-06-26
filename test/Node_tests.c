@@ -8,11 +8,12 @@
 
 #define TEST(name) { (char*)#name, name, NULL, NULL, MUNIT_TEST_OPTION_NONE, NULL }
 
-static MunitResult initialize_node(const MunitParameter params[], void* data)
+// Test 1: Initialize a node with a symbol and frequency of 0
+static MunitResult node_create_single_node_with_frequency_of_zero(const MunitParameter params[], void* data)
 {
-    uint8_t symbol = 1;
-    uint64_t frequency = 10;
-    Node* n = node_create(1, 10);
+    uint8_t symbol = '1';
+    uint64_t frequency = 0;
+    Node* n = node_create(symbol, frequency);
 
     munit_assert_not_null(n);
     munit_assert_int(symbol, ==, n->symbol);
@@ -21,11 +22,55 @@ static MunitResult initialize_node(const MunitParameter params[], void* data)
     return MUNIT_OK;
 }
 
-static MunitResult destroy_node(const MunitParameter params[], void* data)
+// Test 2: Initialize a node with a symbol and frequency of 1
+static MunitResult node_create_single_node_with_frequency_of_one(const MunitParameter params[], void* data)
+{
+    uint8_t symbol = '1';
+    uint64_t frequency = 1;
+    Node* n = node_create(symbol, frequency);
+
+    munit_assert_not_null(n);
+    munit_assert_int(symbol, ==, n->symbol);
+    munit_assert_int(frequency, ==, n->frequency);
+
+    return MUNIT_OK;
+}
+
+
+// Test 3: Initialize a node with a symbol and frequency of 10
+static MunitResult node_create_single_node_with_frequency_of_ten(const MunitParameter params[], void* data)
+{
+    uint8_t symbol = '1';
+    uint64_t frequency = 10;
+    Node* n = node_create(symbol, frequency);
+
+    munit_assert_not_null(n);
+    munit_assert_int(symbol, ==, n->symbol);
+    munit_assert_int(frequency, ==, n->frequency);
+
+    return MUNIT_OK;
+}
+
+// Test 4: Initialize a node with a symbol and frequency of 100
+static MunitResult node_create_single_node_with_frequency_of_hundred(const MunitParameter params[], void* data)
+{
+    uint8_t symbol = '1';
+    uint64_t frequency = 100;
+    Node* n = node_create(symbol, frequency);
+
+    munit_assert_not_null(n);
+    munit_assert_int(symbol, ==, n->symbol);
+    munit_assert_int(frequency, ==, n->frequency);
+
+    return MUNIT_OK;
+}
+
+// Test 5: Delete a node with a symbol and frequency of 0
+static MunitResult node_delete_after_creation_with_frequency_of_zero(const MunitParameter params[], void* data)
 {
     // Arrange
     Node* n = NULL;
-    n = node_create(1, 10);
+    n = node_create('1', 0);
 
     // Act
     munit_assert_not_null(n);
@@ -38,45 +83,93 @@ static MunitResult destroy_node(const MunitParameter params[], void* data)
     return MUNIT_OK;
 }
 
-static MunitResult join_nodes(const MunitParameter params[], void* data)
+// Test 6: Delete a node with a symbol and frequency of 1
+static MunitResult node_delete_after_creation_with_frequency_of_one(const MunitParameter params[], void* data)
 {
-    // TODO Figure out how nodes_join works and implement this correctly
-    uint8_t leftSymbol = '1';
-    uint8_t rightSymbol = '2';
-    uint8_t newSymbol = '$';
-    
-    uint64_t leftFrequency = 10;
-    uint64_t rightFrequency = 11;
-    uint64_t newFrequency = leftFrequency + rightFrequency;
+    // Arrange
+    Node* n = NULL;
+    n = node_create('1', 1);
 
-    Node* left = node_create(leftSymbol, leftFrequency);
-    Node* right = node_create(rightSymbol, rightFrequency);
+    // Act
+    munit_assert_not_null(n);
+    Node** nPtr = &n;
 
-    munit_assert_not_null(left);
-    munit_assert_not_null(right);
-
-    Node* new = node_join(left, right);
-
-    munit_assert_not_null(new);
-
-    munit_assert_uint(newSymbol, ==, new->symbol);
-    munit_assert_uint(newFrequency, ==, new->frequency);
+    // Assume 
+    node_delete(nPtr);
+    munit_assert_null(n);
 
     return MUNIT_OK;
 }
 
-// Test 1: Initialize a node with a symbol and frequency
-static MunitResult node_create_test(const MunitParameter params[], void* data)
+// Test 7: Delete a node with a symbol and frequency of 10
+static MunitResult node_delete_after_creation_with_frequency_of_ten(const MunitParameter params[], void* data)
 {
     // Arrange
-    uint8_t symbol = '1';
-    uint64_t frequency = 10;
+    Node* n = NULL;
+    n = node_create('1', 10);
 
     // Act
-    Node* n = node_create(symbol, frequency);
-
-    // Assert
     munit_assert_not_null(n);
+    Node** nPtr = &n;
+
+    // Assume 
+    node_delete(nPtr);
+    munit_assert_null(n);
+
+    return MUNIT_OK;
+}
+
+// Test 8: Delete a node with a symbol and frequency of 100
+static MunitResult node_delete_after_creation_with_frequency_of_hundred(const MunitParameter params[], void* data)
+{
+    // Arrange
+    Node* n = NULL;
+    n = node_create('1', 100);
+
+    // Act
+    munit_assert_not_null(n);
+    Node** nPtr = &n;
+
+    // Assume 
+    node_delete(nPtr);
+    munit_assert_null(n);
+
+    return MUNIT_OK;
+}
+
+// Test 9: Join two nodes with a symbol and frequency of 0 and 1
+static MunitResult node_join_two_nodes_with_frequency_of_zero_and_one(const MunitParameter params[], void* data)
+{
+    // Arrange
+    // Set up n1
+    uint32_t n1_symbol = '1';
+    uint64_t n1_frequency = 0;
+    Node* n1 = node_create(n1_symbol, n1_frequency);
+
+    // Set up n2
+    uint32_t n2_symbol = '2';
+    uint64_t n2_frequency = 1;
+    Node* n2 = node_create(n2_symbol, n2_frequency);
+
+    // Join nodes
+    uint32_t new_symbol = '$';
+    Node* n = node_join(n1, n2);
+
+    // Act
+    // Test that new node has new symbol and sum of joined nodes' frequencies
+    munit_assert_not_null(n);
+    munit_assert_uint32(n->symbol, ==, new_symbol);
+    munit_assert_uint64(n->frequency, ==, n1_frequency + n2_frequency);
+
+    // Test that new node's left child is n1
+    munit_assert_not_null(n->leftChild);
+    munit_assert_uint32(n->leftChild->symbol, ==, n1_symbol);
+    munit_assert_uint64(n->leftChild->frequency, ==, n1_frequency);
+
+    // Test that new node's right child is n2
+    munit_assert_not_null(n->rightChild);
+    munit_assert_uint32(n->rightChild->symbol, ==, n2_symbol);
+    munit_assert_uint64(n->rightChild->frequency, ==, n2_frequency);
 
     return MUNIT_OK;
 }
@@ -84,9 +177,14 @@ static MunitResult node_create_test(const MunitParameter params[], void* data)
 // List of tests
 MunitTest node_tests[] =
 {
-    TEST(initialize_node),
-    TEST(destroy_node),
-    TEST(join_nodes),
-    TEST(node_create_test),
+    TEST(node_create_single_node_with_frequency_of_zero),
+    TEST(node_create_single_node_with_frequency_of_one),
+    TEST(node_create_single_node_with_frequency_of_ten),
+    TEST(node_create_single_node_with_frequency_of_hundred),
+    TEST(node_delete_after_creation_with_frequency_of_zero),
+    TEST(node_delete_after_creation_with_frequency_of_one),
+    TEST(node_delete_after_creation_with_frequency_of_ten),
+    TEST(node_delete_after_creation_with_frequency_of_hundred),
+    TEST(node_join_two_nodes_with_frequency_of_zero_and_one),
     {NULL}
 };

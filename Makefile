@@ -31,7 +31,6 @@ HEADEXT := h
 # Defines the C Compiler
 CC := gcc
 
-
 # Defines the language standards for GCC
 STD := -std=gnu99 # See man gcc for more options
 
@@ -42,6 +41,8 @@ STACK := -fstack-protector-all -Wstack-protector
 WARNS := -Wall -Wextra -pedantic # -pedantic warns on language standards
 
 TEST_WARNS := -Wno-unused-parameter
+
+TEST_FLAGS := -DMUNIT_TEST_NAME_LEN=60
 
 # Flags for compiling
 CFLAGS := -O3 $(STD) $(STACK) $(WARNS) -I$(INCDIR)
@@ -129,7 +130,7 @@ valgrind:
 tests:
 	@echo SRC_FILES $(SRC_FILES);
 	@echo -en "$(BROWN)CC $(END_COLOR)";
-	$(CC) $(TEST_WARNS) $(EXTDIR)/munit/munit.c -DMUNIT_TEST_NAME_LEN=53 $(SRC_FILES) $(TESTDIR)/*.$(SRCEXT) -o $(BINDIR)/$(TEST_BINARY) $(DEBUG) $(CFLAGS) $(LIBS) $(TEST_LIBS)
+	$(CC) $(TEST_WARNS) $(TEST_FLAGS) $(EXTDIR)/munit/munit.c $(SRC_FILES) $(TESTDIR)/*.$(SRCEXT) -o $(BINDIR)/$(TEST_BINARY) $(DEBUG) $(CFLAGS) $(LIBS) $(TEST_LIBS)
 	@which ldconfig && ldconfig -C /tmp/ld.so.cache || true # caching the library linking
 	@echo -en "$(BROWN) Running tests: $(END_COLOR)";
 	./$(BINDIR)/$(TEST_BINARY)

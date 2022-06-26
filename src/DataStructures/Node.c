@@ -42,23 +42,25 @@ void node_delete(Node** node)
  }
 
 /*
- *
- *
+ * Function that joins two nodes and sets their symbol to '$' and combines their frequencies
+ * and sets those values to a newly created parent node.
  */
 Node* node_join(Node* left, Node* right)
 {
-    // TODO: Implement (following code is a place holder)
-    left->symbol = '$';
-    left->frequency = left->frequency + right->frequency;
-    return left;
+    // Create parent node to return
+    Node* parent = node_create('$', left->frequency + right->frequency);
+    
+    // Set its children as the parameter nodes
+    parent->leftChild = left;
+    parent->rightChild = right;
+
+    return parent;
 }
 
 /*
- *
- *
+ * Function that prints the symbol and frequency of a node (debugging purposes)
  */
  void node_print(Node* node)
  {
-    // TODO: Implement (following code is a place holder)
     printf("symbol: %d, frequency %ld", node->symbol, node->frequency);
  }
