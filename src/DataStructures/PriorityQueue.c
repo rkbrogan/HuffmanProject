@@ -93,7 +93,7 @@ bool pq_enqueue(PriorityQueue* pq, Node* n)
         else 
         {
             // Walk through list to find a node with a higher frequency
-            while (temp->rightChild != NULL && result != true)
+            while (temp->rightChild != NULL && result == false)
             {
                 if (temp->rightChild->frequency > n->frequency)
                 {
@@ -105,6 +105,8 @@ bool pq_enqueue(PriorityQueue* pq, Node* n)
 
                     result = true;
                 }
+
+                temp = temp->rightChild;
             }
 
             // If we've approached the end, set new node as the tail
