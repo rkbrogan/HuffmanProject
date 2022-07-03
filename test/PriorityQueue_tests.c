@@ -142,7 +142,7 @@ static MunitResult pq_empty_capacity_of_hundred(const MunitParameter params[], v
 
     return MUNIT_OK;
 }
-
+// TODO: Remove this test
 // Test 12: Check if PriorityQueue is full with capacity of 0
 static MunitResult pq_full_capacity_of_zero(const MunitParameter params[], void* data)
 {
@@ -281,7 +281,6 @@ static MunitResult pq_dequeue_capacity_of_four_in_order(const MunitParameter par
 }
 
 // Test 19: Dequeue a priority queue with a capacity of four (reverse order)
-// TODO: This test fails
 static MunitResult pq_dequeue_capacity_of_four_in_reverse_order(const MunitParameter params[], void* data)
 {
     PriorityQueue* pq = pq_create(4);
