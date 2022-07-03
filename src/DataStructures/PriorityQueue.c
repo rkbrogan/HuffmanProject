@@ -6,6 +6,11 @@
 
 PriorityQueue* pq_create(uint32_t capacity)
 {
+    if (capacity <= 0)
+    {
+        return NULL;
+    }
+
     PriorityQueue* pq = malloc(sizeof(PriorityQueue));
     assert(pq != NULL);
 
@@ -48,55 +53,82 @@ bool pq_isFull(PriorityQueue* pq)
 }
 
 // TODO: Fix this function. It is currently a doubly linked list
+
 bool pq_enqueue(PriorityQueue* pq, Node* n)
 {
     assert(pq);
+    assert(pq->capacity > 0);
+
+    assert(n);
+    assert('a' <= n->symbol && n->symbol <= 'z');
+    // assert(n->frequency >= 0);
 
     bool result = false;
 
-    if (!pq_isFull(pq))
+    // If pq is empty, set to head of list
+    if (pq_isEmpty(pq))
     {
-        // Loop through queue until we find a node with a higher frequency.
-        Node* current = pq->head;
-        Node* previous = NULL;
-    
-        while (current != NULL && current->frequency < n->frequency)
-        {
-            previous = current;
-            current = current->rightChild;
-        }
+        pq->head = n;
+        pq->tail = n;
 
-        // If we found a node with a higher frequency, insert the new node before it.
-        if (current != NULL)
-        {
-            n->leftChild = current->leftChild;
-            n->rightChild = current;
-            current->leftChild = n;
-        }
-        else    // Insert new node at the end
-        {
-            n->leftChild = NULL;
-            n->rightChild = NULL;
+        // Update pq
+        pq->size++;
 
-            if (previous != NULL)
+        result = true;
+    }
+    else if (!pq_isFull(pq))
+    {
+        // Node to iterate through pq
+        Node* temp = pq->head;
+
+        // Special case; check the head node's frequency
+        if (temp->frequency > n->frequency)
+        {
+            // Set up new location of head
+            n->rightChild = temp;
+            pq->head = n;
+
+            result = true;
+        }
+        else 
+        {
+            // Walk through list to find a node with a higher frequency
+            while (temp->rightChild != NULL && result != true)
             {
-                previous->rightChild = n;
+                if (temp->rightChild->frequency > n->frequency)
+                {
+                    // Set position of new node to be before temp->rightChild
+                    n->rightChild = temp->rightChild;
+                    
+                    // Set temp to be node before new node
+                    temp->rightChild = n;
+
+                    result = true;
+                }
+            }
+
+            // If we've approached the end, set new node as the tail
+            if (temp->rightChild == NULL && result != true)
+            {
+                temp->rightChild = n;
+                pq->tail = n;
+
+                result = true;
             }
         }
 
-        // If the head is NULL, the new node is the head.
-        if (pq->head == NULL)
+        // Update pq->size if enqueue was successful
+        if (result == true)
         {
-            pq->head = n;
+            pq->size++;
         }
 
-        // Increment the size of the queue.
-        pq->size++;
-        
-        result = true;
+        return result;
+
     }
 
     return result;
+
 }
 
 // TODO: Check if this is correct (lines 117-121)

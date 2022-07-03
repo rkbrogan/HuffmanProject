@@ -10,11 +10,18 @@
 
 // LOWER FREQUENCY IS HIGHER PRIORITY
 
+/* ---- PQ NOTES ----
+ * FIFO
+ * Single Linked List (next node is right child)
+ * Enqueue 
+ * Dequeue returns the highest priority node (head of the linked list)
+ */
 typedef struct PriorityQueue_ 
 {
     uint32_t size;          // Number of nodes in the queue
     uint32_t capacity;      // Maximum number of nodes in the queue
-    Node* head;             // Pointer to the head of the queue (first to be dequeued)
+    Node* head;             // Pointer to the head of the queue 
+    Node* tail;             // Pointer to the end of the queue
 } PriorityQueue;
 
 /* Functions */
