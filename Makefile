@@ -116,13 +116,14 @@ $(LIBDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 
 
 # Rule for run valgrind tool
+# TODO: setup valgrind for test binary (reset line 126 to '$(BINDIR)/$(BINARY)')
 valgrind:
 	valgrind \
 		--track-origins=yes \
 		--leak-check=full \
 		--leak-resolution=high \
 		--log-file=$(LOGDIR)/$@.log \
-		$(BINDIR)/$(BINARY)
+		$(BINDIR)/$(TEST_BINARY)
 	@echo -en "\nCheck the log file: $(LOGDIR)/$@.log\n"
 
 

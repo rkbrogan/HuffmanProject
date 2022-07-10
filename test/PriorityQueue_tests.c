@@ -64,8 +64,6 @@ static MunitResult pq_delete_capacity_of_zero(const MunitParameter params[], voi
 {
     PriorityQueue* pq = pq_create(0);
 
-    pq_delete(&pq);
-
     munit_assert_ptr_null(pq);
 
     return MUNIT_OK;
@@ -167,6 +165,8 @@ static MunitResult pq_full_capacity_of_one(const MunitParameter params[], void* 
 
     munit_assert_true(pq_isFull(pq));
 
+    node_delete(&node);
+
     pq_delete(&pq);
 
     return MUNIT_OK;
@@ -178,7 +178,9 @@ static MunitResult pq_full_capacity_of_ten(const MunitParameter params[], void* 
     PriorityQueue* pq = pq_create(10);
     munit_assert_not_null(pq);
 
-    for (int i = 0; i < 10; i++)
+    uint32_t pqCapacity = pq_capacity(pq);
+
+    for (uint32_t i = 0; i < pqCapacity; i++)
     {
         Node* node = node_create('a', i);
 
@@ -187,10 +189,21 @@ static MunitResult pq_full_capacity_of_ten(const MunitParameter params[], void* 
 
     munit_assert_true(pq_isFull(pq));
 
+    for (uint32_t i = 0; i < pqCapacity; i++)
+    {
+        Node* temp = NULL;
+        
+        pq_dequeue(pq, &temp);
+
+        node_delete(&temp);
+    }
+
     pq_delete(&pq);
 
     return MUNIT_OK;
 }
+
+// TODO: free all nodes from all tests!
 
 // Test 15: Check if PriorityQueue is full with capacity of 100
 static MunitResult pq_full_capacity_of_hundred(const MunitParameter params[], void* data)
@@ -249,6 +262,8 @@ static MunitResult pq_dequeue_capacity_of_two(const MunitParameter params[], voi
     
     munit_assert_uint32(pq->size, ==, 1);
 
+    pq_delete(&pq);
+
     return MUNIT_OK;
 }
 
@@ -276,6 +291,8 @@ static MunitResult pq_dequeue_capacity_of_four_in_order(const MunitParameter par
     munit_assert_uint32(temp->symbol, ==, 'a');
 
     munit_assert_uint32(pq->size, ==, 3);
+
+    pq_delete(&pq);
 
     return MUNIT_OK;
 }
@@ -306,11 +323,44 @@ static MunitResult pq_dequeue_capacity_of_four_in_reverse_order(const MunitParam
 
     munit_assert_uint32(pq->size, ==, 3);
 
+    pq_delete(&pq);
+
     return MUNIT_OK;
 }
 
+// Test 20: Dequeue a priority queue with a capacity of four (random order)
+static MunitResult pq_dequeue_capacity_of_four_in_random_order(const MunitParameter params[], void* data)
+{
+    PriorityQueue* pq = pq_create(4);
+    munit_assert_not_null(pq);
 
-// TODO: Write tests for enqueue and dequeue
+    Node* node1 = node_create('a', 1);
+    Node* node2 = node_create('b', 2);
+    Node* node3 = node_create('c', 3);
+    Node* node4 = node_create('d', 4);
+
+    // Enqueue reverse order
+    pq_enqueue(pq, node3);
+    pq_enqueue(pq, node4);
+    pq_enqueue(pq, node1);
+    pq_enqueue(pq, node2);
+
+    Node* temp;
+
+    pq_dequeue(pq, &temp);
+
+    munit_assert_uint64(temp->frequency, ==, 1);
+    munit_assert_uint32(temp->symbol, ==, 'a');
+
+    munit_assert_uint32(pq->size, ==, 3);
+
+    pq_delete(&pq);
+
+    return MUNIT_OK;
+} 
+
+
+// TODO: Write tests for enqueue
 // TODO: Write tests for pq_size
 
 MunitTest priorityQueue_tests[] =
@@ -334,5 +384,6 @@ MunitTest priorityQueue_tests[] =
     TEST(pq_dequeue_capacity_of_two),
     TEST(pq_dequeue_capacity_of_four_in_order),
     TEST(pq_dequeue_capacity_of_four_in_reverse_order),
+    TEST(pq_dequeue_capacity_of_four_in_random_order),
     {NULL}
 };

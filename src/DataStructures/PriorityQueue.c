@@ -24,6 +24,9 @@ PriorityQueue* pq_create(uint32_t capacity)
 void pq_delete(PriorityQueue** pq)
 {
     assert(pq);
+    assert(*pq);
+    free(*pq);
+
     *pq = NULL;
 }
 
@@ -93,7 +96,7 @@ bool pq_enqueue(PriorityQueue* pq, Node* n)
         else 
         {
             // Walk through list to find a node with a higher frequency
-            while (temp->rightChild != NULL && result == false)
+            while (temp->rightChild != NULL)
             {
                 if (temp->rightChild->frequency > n->frequency)
                 {
@@ -104,6 +107,8 @@ bool pq_enqueue(PriorityQueue* pq, Node* n)
                     temp->rightChild = n;
 
                     result = true;
+
+                    break;
                 }
 
                 temp = temp->rightChild;
@@ -143,7 +148,6 @@ bool pq_dequeue(PriorityQueue* pq, Node **n)
     if (!pq_isEmpty(pq))
     {
         assert(n);
-        assert(*n);
 
         // Get head of priority queue
         *n = pq->head;
@@ -165,6 +169,11 @@ bool pq_dequeue(PriorityQueue* pq, Node **n)
 uint32_t pq_size(PriorityQueue *pq)
 {
     return pq->size;
+}
+
+uint32_t pq_capacity(PriorityQueue *pq)
+{
+    return pq->capacity;
 }
 
 // TODO: Implement PQ as a min-heap

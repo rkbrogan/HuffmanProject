@@ -36,5 +36,6 @@ bool pq_enqueue(PriorityQueue* pq, Node* n);
 bool pq_dequeue(PriorityQueue* pq, Node **n);
 
 uint32_t pq_size(PriorityQueue *pq);
+uint32_t pq_capacity(PriorityQueue *pq);
 
 #endif // PRIORITYQUEUE_H

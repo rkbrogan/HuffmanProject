@@ -1,3 +1,6 @@
 # Generated Files
 *.o 
 bin/huff*
+
+# Valgrind log files
+valgrind.log*
