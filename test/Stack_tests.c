@@ -87,10 +87,28 @@ static MunitResult stack_delete_with_capacity_of_hundred(const MunitParameter pa
     return MUNIT_OK;
 }
 
-// Test: Push a value onto a stack with a capacity of one
+// Test: Push a value onto an empty stack with a capacity of one
 static MunitResult stack_push_with_capacity_of_one(const MunitParameter params[], void* data)
 {
     Stack* stack = stack_create(1);
+    munit_assert_not_null(stack);
+
+    Node* n = node_create('1', 1);
+
+    munit_assert_true(stack_push(stack, n));
+
+    munit_assert_int(1, ==, stack->top);
+    munit_assert_int(1, ==, stack->items[0]);
+    
+    stack_delete(&stack);
+    
+    return MUNIT_OK;
+}
+
+// Test: Push a value onto an empty stack with a capacity of 10
+static MunitResult stack_push_with_capacity_of_ten(const MunitParameter params[], void* data)
+{
+    Stack* stack = stack_create(10);
     munit_assert_not_null(stack);
 
     Node* n = node_create('1', 1);
