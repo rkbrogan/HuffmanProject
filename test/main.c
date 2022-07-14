@@ -25,6 +25,7 @@
 
 #include "Node_tests.h"
 #include "PriorityQueue_tests.h"
+#include "Stack_tests.h"
 
 #include <assert.h>
 #include <stdio.h>
@@ -37,6 +38,7 @@
 static MunitSuite sub_suites[] = {
  {"Node ", node_tests, NULL, 1, MUNIT_SUITE_OPTION_NONE},
  {"PriorityQueue ", priorityQueue_tests, NULL, 1, MUNIT_SUITE_OPTION_NONE},
+ {"Stack ", stack_tests, NULL, 1, MUNIT_SUITE_OPTION_NONE},
  {NULL}
 };
 /* Now we'll actually declare the test suite.  You could do this in

@@ -55,8 +55,6 @@ bool pq_isFull(PriorityQueue* pq)
     return pq->size == pq->capacity;
 }
 
-// TODO: Fix this function. It is currently a doubly linked list
-
 bool pq_enqueue(PriorityQueue* pq, Node* n)
 {
     assert(pq);
@@ -138,7 +136,6 @@ bool pq_enqueue(PriorityQueue* pq, Node* n)
 
 }
 
-// TODO: Check if this is correct (lines 117-121)
 bool pq_dequeue(PriorityQueue* pq, Node **n)
 {
     assert(pq);
@@ -176,4 +173,4 @@ uint32_t pq_capacity(PriorityQueue *pq)
     return pq->capacity;
 }
 
-// TODO: Implement PQ as a min-heap
+// TODO [LATER]: Implement PQ as a min-heap

@@ -4,6 +4,8 @@
 
 #include "Node.h"
 
+#include <stdbool.h>
+
 typedef struct Stack {
     uint32_t top;
     uint32_t capacity;
