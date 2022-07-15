@@ -41,6 +41,7 @@ static MunitSuite sub_suites[] = {
  {"Stack ", stack_tests, NULL, 1, MUNIT_SUITE_OPTION_NONE},
  {NULL}
 };
+
 /* Now we'll actually declare the test suite.  You could do this in
  * the main function, or on the heap, or whatever you want. */
 static const MunitSuite test_suite = {
