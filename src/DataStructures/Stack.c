@@ -28,6 +28,11 @@ void stack_delete(Stack** stack)
     assert(stack);
     assert(*stack);
 
+    for (uint32_t i = 0; i < (*stack)->top; i++)
+    {
+        node_delete(&((*stack)->items[i]));
+    }
+
     free((*stack)->items);
     free(*stack);
 

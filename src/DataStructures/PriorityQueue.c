@@ -21,6 +21,7 @@ PriorityQueue* pq_create(uint32_t capacity)
     return pq;
 }
 
+// TODO: This function has memory leaks because of the nodes
 void pq_delete(PriorityQueue** pq)
 {
     assert(pq);
