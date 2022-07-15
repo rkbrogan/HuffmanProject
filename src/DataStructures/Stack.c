@@ -104,8 +104,7 @@ void stack_print(Stack* stack)
     assert(stack);
 
     // Walk through stack and print each node's character.
-    uint32_t i = 0;
-    for (i = 0; i < stack->top; i++)
+    uint32_t i = stack->top - 1;
     {
         printf("%c ", stack->items[i]->symbol);
     }
