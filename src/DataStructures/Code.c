@@ -1,7 +1,7 @@
 #include "Code.h"
 
 #include <stdio.h>
-
+// TODO: See bit array
 Code code_init(void)
 {
     Code code;
