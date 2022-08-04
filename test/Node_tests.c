@@ -19,6 +19,8 @@ static MunitResult node_create_single_node_with_frequency_of_zero(const MunitPar
     munit_assert_int(symbol, ==, n->symbol);
     munit_assert_int(frequency, ==, n->frequency);
 
+    node_delete(&n);
+
     return MUNIT_OK;
 }
 
@@ -32,6 +34,8 @@ static MunitResult node_create_single_node_with_frequency_of_one(const MunitPara
     munit_assert_not_null(n);
     munit_assert_int(symbol, ==, n->symbol);
     munit_assert_int(frequency, ==, n->frequency);
+
+    node_delete(&n);
 
     return MUNIT_OK;
 }
@@ -48,6 +52,8 @@ static MunitResult node_create_single_node_with_frequency_of_ten(const MunitPara
     munit_assert_int(symbol, ==, n->symbol);
     munit_assert_int(frequency, ==, n->frequency);
 
+    node_delete(&n);
+
     return MUNIT_OK;
 }
 
@@ -61,6 +67,8 @@ static MunitResult node_create_single_node_with_frequency_of_hundred(const Munit
     munit_assert_not_null(n);
     munit_assert_int(symbol, ==, n->symbol);
     munit_assert_int(frequency, ==, n->frequency);
+
+    node_delete(&n);
 
     return MUNIT_OK;
 }
@@ -80,6 +88,8 @@ static MunitResult node_delete_after_creation_with_frequency_of_zero(const Munit
     node_delete(nPtr);
     munit_assert_null(n);
 
+    node_delete(&n);
+
     return MUNIT_OK;
 }
 
@@ -97,6 +107,8 @@ static MunitResult node_delete_after_creation_with_frequency_of_one(const MunitP
     // Assume 
     node_delete(nPtr);
     munit_assert_null(n);
+
+    node_delete(&n);
 
     return MUNIT_OK;
 }
@@ -116,6 +128,8 @@ static MunitResult node_delete_after_creation_with_frequency_of_ten(const MunitP
     node_delete(nPtr);
     munit_assert_null(n);
 
+    node_delete(&n);
+
     return MUNIT_OK;
 }
 
@@ -133,6 +147,8 @@ static MunitResult node_delete_after_creation_with_frequency_of_hundred(const Mu
     // Assume 
     node_delete(nPtr);
     munit_assert_null(n);
+
+    node_delete(&n);
 
     return MUNIT_OK;
 }
@@ -170,6 +186,10 @@ static MunitResult node_join_two_nodes_with_frequency_of_zero_and_one(const Muni
     munit_assert_not_null(n->rightChild);
     munit_assert_uint32(n->rightChild->symbol, ==, n2_symbol);
     munit_assert_uint64(n->rightChild->frequency, ==, n2_frequency);
+
+    node_delete(&n);
+    node_delete(&n1);
+    node_delete(&n2);
 
     return MUNIT_OK;
 }

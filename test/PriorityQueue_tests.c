@@ -165,7 +165,7 @@ static MunitResult pq_full_capacity_of_one(const MunitParameter params[], void* 
 
     munit_assert_true(pq_isFull(pq));
 
-    node_delete(&node);
+    // node_delete(&node);
 
     pq_delete(&pq);
 
@@ -188,15 +188,6 @@ static MunitResult pq_full_capacity_of_ten(const MunitParameter params[], void* 
     }
 
     munit_assert_true(pq_isFull(pq));
-
-    for (uint32_t i = 0; i < pqCapacity; i++)
-    {
-        Node* temp = NULL;
-        
-        pq_dequeue(pq, &temp);
-
-        node_delete(&temp);
-    }
 
     pq_delete(&pq);
 
@@ -262,6 +253,9 @@ static MunitResult pq_dequeue_capacity_of_two(const MunitParameter params[], voi
     
     munit_assert_uint32(pq->size, ==, 1);
 
+    // Deleting node that I dequeued
+    node_delete(&temp);
+
     pq_delete(&pq);
 
     return MUNIT_OK;
@@ -291,6 +285,9 @@ static MunitResult pq_dequeue_capacity_of_four_in_order(const MunitParameter par
     munit_assert_uint32(temp->symbol, ==, 'a');
 
     munit_assert_uint32(pq->size, ==, 3);
+
+    // Deleting node that I dequeued
+    node_delete(&temp);
 
     pq_delete(&pq);
 
@@ -323,6 +320,9 @@ static MunitResult pq_dequeue_capacity_of_four_in_reverse_order(const MunitParam
 
     munit_assert_uint32(pq->size, ==, 3);
 
+    // Deleting node that I dequeued
+    node_delete(&temp);
+
     pq_delete(&pq);
 
     return MUNIT_OK;
@@ -354,13 +354,14 @@ static MunitResult pq_dequeue_capacity_of_four_in_random_order(const MunitParame
 
     munit_assert_uint32(pq->size, ==, 3);
 
+    // Deleting node that I dequeued
+    node_delete(&temp);
+
     pq_delete(&pq);
 
     return MUNIT_OK;
 } 
 
-
-// TODO: Write tests for enqueue
 // TODO: Write tests for pq_size
 
 MunitTest priorityQueue_tests[] =

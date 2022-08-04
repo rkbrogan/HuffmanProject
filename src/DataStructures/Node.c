@@ -20,6 +20,7 @@ Node* node_create(uint8_t symbol, uint64_t frequency)
     {
         return NULL;
     }
+    
     // Assign data values
     node->symbol = symbol;
     node->frequency = frequency;

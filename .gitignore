@@ -4,3 +4,6 @@ bin/huff*
 
 # Valgrind log files
 valgrind.log*
+
+# Generated core files
+core.*

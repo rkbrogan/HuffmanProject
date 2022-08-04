@@ -26,6 +26,15 @@ void pq_delete(PriorityQueue** pq)
 {
     assert(pq);
     assert(*pq);
+    size_t pqSize = pq_size(*pq);
+
+    for (size_t i = 0; i < pqSize; i++)
+    {
+        Node* temp;
+        pq_dequeue(*pq, &temp);
+        node_delete(&temp);
+    }
+
     free(*pq);
 
     *pq = NULL;

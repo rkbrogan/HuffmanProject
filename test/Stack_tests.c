@@ -228,12 +228,16 @@ static MunitResult stack_push_three_values_with_capacity_of_two(const MunitParam
     // Stack should be full
     munit_assert_false(stack_push(stack, n3));
     
+    // Delete node that wasn't added to stack
+    node_delete(&n3);
+    
     // Top should be 2
     munit_assert_int(2, ==, stack->top);
 
     munit_assert_int(1, ==, stack->items[0]->frequency);
     munit_assert_int(2, ==, stack->items[1]->frequency);
     
+
     stack_delete(&stack);
     
     return MUNIT_OK;
