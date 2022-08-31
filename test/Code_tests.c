@@ -2,6 +2,8 @@
 
 #include "Code.h"
 
+#include <stdlib.h>
+
 #define TEST(name) { (char*)#name, name, NULL, NULL, MUNIT_TEST_OPTION_NONE, NULL }
 
 /* Write the following tests firsts:
@@ -17,3 +19,14 @@
     - code_push_bit
     - code_pop_bit
 */
+
+// Test Initialization
+static MunitResult test_code_init(const MunitParameter params[], void* fixture) {
+    Code code = code_init();
+
+    munit_assert_uint(code.top, ==, 0);
+
+    return MUNIT_OK;
+}
+
+
