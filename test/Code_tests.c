@@ -55,7 +55,8 @@ static MunitResult test_code_set_bit_2(const MunitParameter params[], void* data
 /* code_clr_bit tests */
 
 // Test: Code clear bit at first index after setting it
-static MunitResult test_code_clr_bit_1(const MunitParameter params[], void* data) {
+static MunitResult test_code_clr_bit_first(const MunitParameter params[], void* data) 
+{
     Code code = code_init();
 
     munit_assert_true(code_set_bit(&code, 0));
@@ -64,6 +65,38 @@ static MunitResult test_code_clr_bit_1(const MunitParameter params[], void* data
 
     return MUNIT_OK;
 }
+
+// Test: Code clear bit at tenth index after setting it
+static MunitResult test_code_clr_bit_tenth(const MunitParameter params[], void* data) 
+{
+    Code code = code_init();
+
+    munit_assert_true(code_set_bit(&code, 9));
+    munit_assert_true(code_clr_bit(&code, 9));
+    munit_assert_uint(code.top, ==, 0);
+
+    return MUNIT_OK;
+}
+
+// Test: Code clear bit after two sets
+static MunitResult test_code_clr_bit_after_two_sets(const MunitParameter params[], void* data) 
+{
+    return MUNIT_OK;
+}
+
+// Test: Code clear both bits after two sets
+static MunitResult test_code_clr_bit_twice(const MunitParameter params[], void* data)
+{
+    return MUNIT_OK;
+}
+
+// Test: Code clear bits that is already cleared
+static MunitResult test_code_clr_already_cleared(const MunitParameter params[], void* data)
+{
+    return MUNIT_OK;
+}
+
+
 
 /* code_get_bit tests */
 
@@ -79,7 +112,8 @@ static MunitResult test_code_clr_bit_1(const MunitParameter params[], void* data
 
 
 // List of tests
-MunitTest code_tests[] = {
+MunitTest code_tests[] = 
+{
     TEST(test_code_init),
 
     { NULL, NULL, NULL, NULL, MUNIT_TEST_OPTION_NONE, NULL }
