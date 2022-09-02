@@ -9,4 +9,4 @@ valgrind.log*
 core.*
 
 # VS Code settings
-vscode/settings.json
+.vscode/settings.json
