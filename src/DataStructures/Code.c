@@ -8,6 +8,12 @@ Code code_init(void)
 
     code.top = 0;
 
+    // Zero out array of bits
+    for (int i = 0; i < MAX_CODE_SIZE; i++)
+    {
+        code.bits[i] = 0;
+    }
+
     return code;
 }
 
