@@ -40,7 +40,23 @@ bool code_set_bit(Code *c, uint32_t i)
 {
     bool result = false;
 
-    c->top++;
+    if (i < ALPHABET && c->top < ALPHABET)
+    {
+        // Get the index of the byte
+        uint32_t byte_index = i / 32;
+
+        // Get the position of the bit in the byte
+        uint32_t bit_index = i % 32;
+
+        // Set the bit
+        c->bits[byte_index] |= (1 << bit_index);
+
+        // Increment the top
+        c->top++;
+
+        result = true;
+    }
+
     return result;
 }
 
