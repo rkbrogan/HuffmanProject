@@ -7,3 +7,6 @@ valgrind.log*
 
 # Generated core files
 core.*
+
+# VS Code settings
+vscode/settings.json
