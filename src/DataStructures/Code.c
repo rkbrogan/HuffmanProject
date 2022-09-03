@@ -1,18 +1,16 @@
 #include "Code.h"
 
 #include <stdio.h>
+
 // See bit array
 Code code_init(void)
 {
+    // Code code = {0};
+
     Code code;
 
-    code.top = 0;
-
     // Zero out array of bits
-    for (int i = 0; i < MAX_CODE_SIZE; i++)
-    {
-        code.bits[i] = 0;
-    }
+    memset(&code, 0, sizeof(Code));
 
     return code;
 }
@@ -43,16 +41,16 @@ bool code_set_bit(Code *c, uint32_t i)
     if (i < ALPHABET && c->top < ALPHABET)
     {
         // Get the index of the byte
-        uint32_t byte_index = i / 32;
+        uint32_t byte_index = i / 8;
 
         // Get the position of the bit in the byte
-        uint32_t bit_index = i % 32;
+        uint32_t bit_index = i % 8;
 
-        // Set the bit
-        c->bits[byte_index] |= (1 << bit_index);
+        uint8_t mask = 1;
 
-        // Increment the top
-        c->top++;
+        mask = mask << bit_index;
+        
+        c->bits[byte_index] = c->bits[byte_index] | mask;
 
         result = true;
     }
