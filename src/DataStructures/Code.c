@@ -36,21 +36,28 @@ bool code_full(Code *c)
 // Function that sets the bit at index i in Code c
 bool code_set_bit(Code *c, uint32_t i)
 {
+    //uint8_t bits[4]
+    // i = 25
     bool result = false;
 
     if (i < ALPHABET && c->top < ALPHABET)
     {
         // Get the index of the byte
         uint32_t byte_index = i / 8;
+        // byte_index = 25/ 8 = 3
 
         // Get the position of the bit in the byte
         uint32_t bit_index = i % 8;
+        // bit_index = 25 % 8 = 1
 
         uint8_t mask = 1;
 
         mask = mask << bit_index;
+
+        // mask = 1 << 1 = 2
         
         c->bits[byte_index] = c->bits[byte_index] | mask;
+        //                    c->bits[3] | 2
 
         result = true;
     }
