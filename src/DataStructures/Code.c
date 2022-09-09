@@ -1,6 +1,7 @@
 #include "Code.h"
 
 #include <stdio.h>
+#include <string.h>
 
 // See bit array
 Code code_init(void)
@@ -59,6 +60,10 @@ bool code_set_bit(Code *c, uint32_t i)
         c->bits[byte_index] = c->bits[byte_index] | mask;
         //                    c->bits[3] | 2
 
+        // Increase top
+        c->top++;
+
+        // Set return value
         result = true;
     }
 
@@ -69,6 +74,31 @@ bool code_set_bit(Code *c, uint32_t i)
 bool code_clr_bit(Code* c, uint32_t i)
 {
     bool result = false;
+
+    if (i < ALPHABET && c->top > 0)
+    {
+        // Get the index of the first byte
+        uint32_t byte_index = i / 8;
+
+        // Get the position of the bit in the byte
+        uint32_t bit_index = i % 8;
+
+        uint8_t mask = 1;
+
+        mask = mask << bit_index;
+
+        // Flip the mask bits
+        mask = ~mask;
+
+        // Clear the bit
+        c->bits[byte_index] = c->bits[byte_index] & mask
+
+        // Update top
+        c->top--;
+
+        // Set return value
+        result = false;
+    }
 
     return result;
 }
