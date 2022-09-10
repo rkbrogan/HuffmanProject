@@ -1,5 +1,6 @@
 #include "Code.h"
 
+#include <assert.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -41,7 +42,7 @@ bool code_set_bit(Code *c, uint32_t i)
     // i = 25
     bool result = false;
 
-    if (i < ALPHABET && c->top < ALPHABET)
+    if (i < ALPHABET)
     {
         // Get the index of the byte
         uint32_t byte_index = i / 8;
@@ -60,9 +61,6 @@ bool code_set_bit(Code *c, uint32_t i)
         c->bits[byte_index] = c->bits[byte_index] | mask;
         //                    c->bits[3] | 2
 
-        // Increase top
-        c->top++;
-
         // Set return value
         result = true;
     }
@@ -75,7 +73,7 @@ bool code_clr_bit(Code* c, uint32_t i)
 {
     bool result = false;
 
-    if (i < ALPHABET && c->top > 0)
+    if (i < ALPHABET)
     {
         // Get the index of the first byte
         uint32_t byte_index = i / 8;
@@ -91,13 +89,10 @@ bool code_clr_bit(Code* c, uint32_t i)
         mask = ~mask;
 
         // Clear the bit
-        c->bits[byte_index] = c->bits[byte_index] & mask
-
-        // Update top
-        c->top--;
+        c->bits[byte_index] = c->bits[byte_index] & mask;
 
         // Set return value
-        result = false;
+        result = true;
     }
 
     return result;
@@ -112,7 +107,14 @@ bool code_get_bit(Code *c, uint32_t i)
 
 bool code_push_bit(Code *c, uint8_t bit)
 {
-    bool result = false;
+    assert(bit == 0 || bit == 1);
+
+    bool result = bit == 1 ? code_set_bit(c, c->top) : code_clr_bit(c, c->top);
+
+    if (result)
+    {
+        c->top++;
+    }
 
     return result;
 }
@@ -126,8 +128,6 @@ bool code_pop_bit(Code *c, uint8_t *bit)
 
 void code_print(Code *c)
 {
-    for (uint32_t i = 0; i < c->top; i++) {
-        printf("%d", c->bits[i]);
-    }
+
     printf("\n");
 }
