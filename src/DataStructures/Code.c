@@ -98,16 +98,40 @@ bool code_clr_bit(Code* c, uint32_t i)
     return result;
 }
 
+// Function that gets the bit at index i. Returns false if i is out of range or bit i is equal to 0. Returns true is and only if bit i is equal to 1.
 bool code_get_bit(Code *c, uint32_t i)
 {
     bool result = false;
+    
+    uint32_t byte_index = i / 8;
+
+    if (i < ALPHABET && c->bits[byte_index] != 0)
+    {
+        uint32_t bit_index = i % 8;
+
+        uint8_t mask = 1;
+
+        mask = mask << bit_index;
+
+        // Check if bit was set
+        if (c->bits[byte_index] == (c->bits[byte_index] & mask))
+        {
+            result = true; 
+        }
+    }
 
     return result;
 }
 
+// Function that pushes bit onto the Code. Returns false if Code is full prior to push.
 bool code_push_bit(Code *c, uint8_t bit)
 {
     assert(bit == 0 || bit == 1);
+
+    if (code_full(c))
+    {
+        return false;
+    }
 
     bool result = bit == 1 ? code_set_bit(c, c->top) : code_clr_bit(c, c->top);
 
@@ -119,15 +143,37 @@ bool code_push_bit(Code *c, uint8_t bit)
     return result;
 }
 
+// Function that pops off the Code. Value of the popped bit is passed back with pointer bit. Returns false if Code is empty prior to popping bit.
 bool code_pop_bit(Code *c, uint8_t *bit)
 {
+    assert(bit != NULL);
+    assert(c != NULL);
+
     bool result = false;
 
+    if (!code_empty(c))
+    {
+        *bit = c->bits[c->top];
+
+        // Update c->top
+        c->top--;
+        result = true;
+    }
+    
     return result;
 }
 
+// Function that prints the Code
 void code_print(Code *c)
 {
+    assert(c != NULL);
+
+    uint32_t size = code_size(c);
+
+    for (uint32_t i = 0; i < size; i++)
+    {
+        printf("%d", code_get_bit(c, i));
+    }
 
     printf("\n");
 }
