@@ -390,6 +390,26 @@ static MunitResult test_code_print_one_set(const MunitParameter params[], void* 
     return MUNIT_OK;
 }
 
+static MunitResult test_code_fibonacci_set_visual(const MunitParameter params[],
+                                                  void *data) {
+  Code code = code_init();
+  // set bits in Fibonacci order - NOTE: duplicate 1:
+  //    0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, ...
+  int n1 = 0;
+  code_set_bit(&code, n1);
+  int n2 = 1;
+  code_set_bit(&code, n2);
+  for (size_t i = 2; i < MAX_CODE_SIZE; i++) {
+    int n3 = n1 + n2;
+    code_set_bit(&code, n3);
+    n1 = n2;
+    n2 = n3;
+  }
+  code_print(&code);
+
+  return MUNIT_SKIP;
+}
+
 // List of tests
 MunitTest code_tests[] = 
 {
@@ -413,5 +433,6 @@ MunitTest code_tests[] =
     TEST(test_code_empty_after_init),
     TEST(test_code_empty_after_push),
     TEST(test_code_print_one_set),
+    TEST(test_code_fibonacci_set_visual),
     { NULL, NULL, NULL, NULL, MUNIT_TEST_OPTION_NONE, NULL }
 };
