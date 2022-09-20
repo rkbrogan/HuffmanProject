@@ -113,11 +113,7 @@ bool code_get_bit(Code *c, uint32_t i)
 
         mask = mask << bit_index;
 
-        // Check if bit was set
-        if (c->bits[byte_index] == (c->bits[byte_index] & mask))
-        {
-            result = true; 
-        }
+        result = c->bits[byte_index] & mask ? true : false;
     }
 
     return result;
@@ -168,11 +164,15 @@ void code_print(Code *c)
 {
     assert(c != NULL);
 
-    uint32_t size = code_size(c);
-
-    for (uint32_t i = 0; i < size; i++)
+    // TODO: Format this
+    for (uint32_t i = 0; i < MAX_CODE_SIZE; i++)
     {
-        printf("%d", code_get_bit(c, i));
+        if (i % 8 == 0)
+        {
+            printf("\n");
+        }
+
+        printf("%d", code_get_bit(c, i) ? 1 : 0);
     }
 
     printf("\n");

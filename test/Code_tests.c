@@ -307,6 +307,27 @@ static MunitResult test_code_get_bit_first_no_set(const MunitParameter params[],
     return MUNIT_OK;
 }
 
+// Test: Code get bit at first index after setting it and second index
+static MunitResult test_code_get_bit_first_after_setting_second(const MunitParameter params[], void* data) 
+{
+    // Initialize code
+    Code code = code_init();
+
+    // Set bit at first position
+    munit_assert_true(code_set_bit(&code, 0));
+
+    // Set bit at second position
+    munit_assert_true(code_set_bit(&code, 1));
+
+    // Get bit at first position
+    munit_assert_true(code_get_bit(&code, 0));
+
+    // Get bit at second position
+    munit_assert_true(code_get_bit(&code, 1));
+
+    return MUNIT_OK;
+}
+
 // Test: Code get bit after setting first and second indexes
 static MunitResult test_code_get_bit_check_wrong_index(const MunitParameter params[], void* data) 
 {
@@ -357,7 +378,17 @@ static MunitResult test_code_empty_after_push(const MunitParameter params[], voi
 
 /* code_size tests */
 
+/* code_print tests */
+static MunitResult test_code_print_one_set(const MunitParameter params[], void* data)
+{
+    Code code = code_init();
 
+    code_set_bit(&code, 0);
+
+    code_print(&code);
+
+    return MUNIT_OK;
+}
 
 // List of tests
 MunitTest code_tests[] = 
@@ -377,8 +408,10 @@ MunitTest code_tests[] =
     TEST(test_code_get_bit_first),
     TEST(test_code_get_bit_twenty_fifth),
     TEST(test_code_get_bit_first_no_set),
+    TEST(test_code_get_bit_first_after_setting_second),
     TEST(test_code_get_bit_check_wrong_index),
     TEST(test_code_empty_after_init),
     TEST(test_code_empty_after_push),
+    TEST(test_code_print_one_set),
     { NULL, NULL, NULL, NULL, MUNIT_TEST_OPTION_NONE, NULL }
 };
