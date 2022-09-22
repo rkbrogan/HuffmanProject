@@ -23,6 +23,9 @@
 
 // Test: Code initialization
 static MunitResult test_code_init(const MunitParameter params[], void* data) {
+    UNUSED(params);
+    UNUSED(data);
+
     // Initialize code
     Code code = code_init();
 
@@ -42,6 +45,9 @@ static MunitResult test_code_init(const MunitParameter params[], void* data) {
 
 // Test: Code set bit at first position
 static MunitResult test_code_set_bit_first(const MunitParameter params[], void* data) {
+    UNUSED(params);
+    UNUSED(data);
+
     // Initialize code
     Code code = code_init();
 
@@ -60,6 +66,9 @@ static MunitResult test_code_set_bit_first(const MunitParameter params[], void* 
 
 // Test: Code set bit at first and second position
 static MunitResult test_code_set_bit_first_second(const MunitParameter params[], void* data) {
+    UNUSED(params);
+    UNUSED(data);
+
     // Initialize code
     Code code = code_init();
 
@@ -80,6 +89,9 @@ static MunitResult test_code_set_bit_first_second(const MunitParameter params[],
 
 // Test: Code set bit at last position
 static MunitResult test_code_set_bit_last(const MunitParameter params[], void* data) {
+    UNUSED(params);
+    UNUSED(data);
+
     // Initialize code
     Code code = code_init();
 
@@ -99,6 +111,9 @@ static MunitResult test_code_set_bit_last(const MunitParameter params[], void* d
 
 // Test: Code set bit at last and second to last position
 static MunitResult test_code_set_bit_last_second_last(const MunitParameter params[], void* data) {
+    UNUSED(params);
+    UNUSED(data);
+
     // Initialize code
     Code code = code_init();
 
@@ -114,6 +129,9 @@ static MunitResult test_code_set_bit_last_second_last(const MunitParameter param
 
 // Test: Code set bit fail at position greater than alphabet size
 static MunitResult test_code_set_bit_fail(const MunitParameter params[], void* data) {
+    UNUSED(params);
+    UNUSED(data);
+
     // Initialize code
     Code code = code_init();
 
@@ -130,6 +148,9 @@ static MunitResult test_code_set_bit_fail(const MunitParameter params[], void* d
 
 // Test: Code set bit fail full code
 static MunitResult test_code_set_bit_out_of_range(const MunitParameter params[], void* data) {
+    UNUSED(params);
+    UNUSED(data);
+
     // Initialize code
     Code code = code_init();
 
@@ -145,6 +166,9 @@ static MunitResult test_code_set_bit_out_of_range(const MunitParameter params[],
 // Test: Code clear bit at first index after setting it
 static MunitResult test_code_clr_bit_first(const MunitParameter params[], void* data) 
 {
+    UNUSED(params);
+    UNUSED(data);
+
     // Initialize code
     Code code = code_init();
 
@@ -165,6 +189,9 @@ static MunitResult test_code_clr_bit_first(const MunitParameter params[], void* 
 // Test: Code clear bit at tenth index after setting it
 static MunitResult test_code_clr_bit_tenth(const MunitParameter params[], void* data) 
 {
+    UNUSED(params);
+    UNUSED(data);
+
     // Initialize code
     Code code = code_init();
 
@@ -185,6 +212,9 @@ static MunitResult test_code_clr_bit_tenth(const MunitParameter params[], void* 
 // Test: Code clear bit after two sets
 static MunitResult test_code_clr_bit_after_two_sets(const MunitParameter params[], void* data) 
 {
+    UNUSED(params);
+    UNUSED(data);
+
     // Initialize code
     Code code = code_init();
 
@@ -206,6 +236,9 @@ static MunitResult test_code_clr_bit_after_two_sets(const MunitParameter params[
 // Test: Code clear both bits after two sets
 static MunitResult test_code_clr_bit_twice(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     // Initialize code
     Code code = code_init();
 
@@ -232,6 +265,9 @@ static MunitResult test_code_clr_bit_twice(const MunitParameter params[], void* 
 // Test: Clear all bits
 static MunitResult test_code_clr_bit_all(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     // Initialize code
     Code code = code_init();
 
@@ -262,6 +298,9 @@ static MunitResult test_code_clr_bit_all(const MunitParameter params[], void* da
 // Test: Code get bit at first index after setting it
 static MunitResult test_code_get_bit_first(const MunitParameter params[], void* data) 
 {
+    UNUSED(params);
+    UNUSED(data);
+
     // Initialize code
     Code code = code_init();
 
@@ -280,6 +319,9 @@ static MunitResult test_code_get_bit_first(const MunitParameter params[], void* 
 // Test: Code get bit at 25th index after setting it
 static MunitResult test_code_get_bit_twenty_fifth(const MunitParameter params[], void* data) 
 {
+    UNUSED(params);
+    UNUSED(data);
+
     // Initialize code
     Code code = code_init();
 
@@ -295,6 +337,9 @@ static MunitResult test_code_get_bit_twenty_fifth(const MunitParameter params[],
 // Test: Code get bit at first index without setting it
 static MunitResult test_code_get_bit_first_no_set(const MunitParameter params[], void* data) 
 {
+    UNUSED(params);
+    UNUSED(data);
+
     // Initialize code
     Code code = code_init();
 
@@ -310,6 +355,9 @@ static MunitResult test_code_get_bit_first_no_set(const MunitParameter params[],
 // Test: Code get bit at first index after setting it and second index
 static MunitResult test_code_get_bit_first_after_setting_second(const MunitParameter params[], void* data) 
 {
+    UNUSED(params);
+    UNUSED(data);
+
     // Initialize code
     Code code = code_init();
 
@@ -331,6 +379,9 @@ static MunitResult test_code_get_bit_first_after_setting_second(const MunitParam
 // Test: Code get bit after setting first and second indexes
 static MunitResult test_code_get_bit_check_wrong_index(const MunitParameter params[], void* data) 
 {
+    UNUSED(params);
+    UNUSED(data);
+
     // Initialize code
     Code code = code_init();
 
@@ -348,6 +399,9 @@ static MunitResult test_code_get_bit_check_wrong_index(const MunitParameter para
 // Test: Code empty after initialization
 static MunitResult test_code_empty_after_init(const MunitParameter params[], void* data) 
 {
+    UNUSED(params);
+    UNUSED(data);
+
     // Initialize code
     Code code = code_init();
 
@@ -360,6 +414,9 @@ static MunitResult test_code_empty_after_init(const MunitParameter params[], voi
 // Test: Code empty after pushing bit
 static MunitResult test_code_empty_after_push(const MunitParameter params[], void* data) 
 {
+    UNUSED(params);
+    UNUSED(data);
+
     // Initialize code
     Code code = code_init();
 
@@ -381,6 +438,9 @@ static MunitResult test_code_empty_after_push(const MunitParameter params[], voi
 /* code_print tests */
 static MunitResult test_code_print_one_set(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Code code = code_init();
 
     code_set_bit(&code, 0);

@@ -12,3 +12,6 @@
 
 // Maxium Huffman tree dump size
 #define MAX_TREE_SIZE (3 * ALPHABET - 1)
+
+// To handle unused parameter in unit tests
+#define UNUSED(x) (void)(x)

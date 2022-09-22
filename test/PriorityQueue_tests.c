@@ -1,5 +1,6 @@
 #include "PriorityQueue_tests.h"
 
+#include "defines.h"
 #include "PriorityQueue.h"
 
 #define TEST(name) { (char*)#name, name, NULL, NULL, MUNIT_TEST_OPTION_NONE, NULL }
@@ -10,6 +11,9 @@
 // Test 1: Create a PriorityQueue with capacity of 0
 static MunitResult pq_create_capacity_of_zero(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     PriorityQueue* pq = pq_create(0);
 
     munit_assert_ptr_null(pq);
@@ -20,6 +24,9 @@ static MunitResult pq_create_capacity_of_zero(const MunitParameter params[], voi
 // Test 2: Create a PriorityQueue with capacity of 1
 static MunitResult pq_create_capacity_of_one(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     PriorityQueue* pq = pq_create(1);
 
     munit_assert_int(pq->capacity, ==, 1);
@@ -34,6 +41,9 @@ static MunitResult pq_create_capacity_of_one(const MunitParameter params[], void
 // Test 3: Create a PriorityQueue with capacity of 10
 static MunitResult pq_create_capacity_of_ten(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     PriorityQueue* pq = pq_create(10);
 
     munit_assert_int(pq->capacity, ==, 10);
@@ -48,6 +58,9 @@ static MunitResult pq_create_capacity_of_ten(const MunitParameter params[], void
 // Test 4: Create a PriorityQueue with capacity of 100
 static MunitResult pq_create_capacity_of_hundred(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     PriorityQueue* pq = pq_create(100);
 
     munit_assert_int(pq->capacity, ==, 100);
@@ -62,6 +75,9 @@ static MunitResult pq_create_capacity_of_hundred(const MunitParameter params[], 
 // Test 5: Delete a PriorityQueue with capacity of 0
 static MunitResult pq_delete_capacity_of_zero(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     PriorityQueue* pq = pq_create(0);
 
     munit_assert_ptr_null(pq);
@@ -72,6 +88,9 @@ static MunitResult pq_delete_capacity_of_zero(const MunitParameter params[], voi
 // Test 6: Delete a PriorityQueue with capacity of 1
 static MunitResult pq_delete_capacity_of_one(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     PriorityQueue* pq = pq_create(1);
 
     pq_delete(&pq);
@@ -84,6 +103,9 @@ static MunitResult pq_delete_capacity_of_one(const MunitParameter params[], void
 // Test 7: Delete a PriorityQueue with capacity of 10
 static MunitResult pq_delete_capacity_of_ten(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     PriorityQueue* pq = pq_create(10);
 
     pq_delete(&pq);
@@ -96,6 +118,9 @@ static MunitResult pq_delete_capacity_of_ten(const MunitParameter params[], void
 // Test 8: Delete a PriorityQueue with capacity of 100
 static MunitResult pq_delete_capacity_of_hundred(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     PriorityQueue* pq = pq_create(100);
 
     pq_delete(&pq);
@@ -108,6 +133,9 @@ static MunitResult pq_delete_capacity_of_hundred(const MunitParameter params[], 
 // Test 9: Check if PriorityQueue is empty with capacity of 1
 static MunitResult pq_empty_capacity_of_one(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     PriorityQueue* pq = pq_create(1);
 
     munit_assert_true(pq_isEmpty(pq));
@@ -120,6 +148,9 @@ static MunitResult pq_empty_capacity_of_one(const MunitParameter params[], void*
 // Test 10: Check if PriorityQueue is empty with capacity of 10
 static MunitResult pq_empty_capacity_of_ten(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     PriorityQueue* pq = pq_create(10);
 
     munit_assert_true(pq_isEmpty(pq));
@@ -132,6 +163,9 @@ static MunitResult pq_empty_capacity_of_ten(const MunitParameter params[], void*
 // Test 11: Check if PriorityQueue is empty with capacity of 100
 static MunitResult pq_empty_capacity_of_hundred(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     PriorityQueue* pq = pq_create(100);
 
     munit_assert_true(pq_isEmpty(pq));
@@ -144,6 +178,9 @@ static MunitResult pq_empty_capacity_of_hundred(const MunitParameter params[], v
 // Test 12: Check if PriorityQueue is full with capacity of 0
 static MunitResult pq_full_capacity_of_zero(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     // PriorityQueue* pq = pq_create(0);
 
     // munit_assert_true(pq_isFull(pq));
@@ -156,6 +193,9 @@ static MunitResult pq_full_capacity_of_zero(const MunitParameter params[], void*
 // Test 13: Check if PriorityQueue is full with capacity of 1
 static MunitResult pq_full_capacity_of_one(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     PriorityQueue* pq = pq_create(1);
     munit_assert_not_null(pq);
 
@@ -175,6 +215,9 @@ static MunitResult pq_full_capacity_of_one(const MunitParameter params[], void* 
 // Test 14: Check if PriorityQueue is full with capacity of 10
 static MunitResult pq_full_capacity_of_ten(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     PriorityQueue* pq = pq_create(10);
     munit_assert_not_null(pq);
 
@@ -199,6 +242,9 @@ static MunitResult pq_full_capacity_of_ten(const MunitParameter params[], void* 
 // Test 15: Check if PriorityQueue is full with capacity of 100
 static MunitResult pq_full_capacity_of_hundred(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     PriorityQueue* pq = pq_create(100);
     munit_assert_not_null(pq);
 
@@ -219,6 +265,9 @@ static MunitResult pq_full_capacity_of_hundred(const MunitParameter params[], vo
 // Test 16: Check if PriorityQueue is full with capacity of 1
 static MunitResult pq_full_capacity_of_one_after_enqueue(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     PriorityQueue* pq = pq_create(10);
     munit_assert_not_null(pq);
 
@@ -236,6 +285,9 @@ static MunitResult pq_full_capacity_of_one_after_enqueue(const MunitParameter pa
 // Test 17: Dequeue a priority queue with a capacity of two
 static MunitResult pq_dequeue_capacity_of_two(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     PriorityQueue* pq = pq_create(2);
     munit_assert_not_null(pq);
 
@@ -264,6 +316,9 @@ static MunitResult pq_dequeue_capacity_of_two(const MunitParameter params[], voi
 // Test 18: Dequeue a priority queue with a capacity of four
 static MunitResult pq_dequeue_capacity_of_four_in_order(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     PriorityQueue* pq = pq_create(4);
     munit_assert_not_null(pq);
 
@@ -297,6 +352,9 @@ static MunitResult pq_dequeue_capacity_of_four_in_order(const MunitParameter par
 // Test 19: Dequeue a priority queue with a capacity of four (reverse order)
 static MunitResult pq_dequeue_capacity_of_four_in_reverse_order(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     PriorityQueue* pq = pq_create(4);
     munit_assert_not_null(pq);
 
@@ -331,6 +389,9 @@ static MunitResult pq_dequeue_capacity_of_four_in_reverse_order(const MunitParam
 // Test 20: Dequeue a priority queue with a capacity of four (random order)
 static MunitResult pq_dequeue_capacity_of_four_in_random_order(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     PriorityQueue* pq = pq_create(4);
     munit_assert_not_null(pq);
 
