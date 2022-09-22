@@ -1,5 +1,6 @@
 #include "Stack_tests.h"
 
+#include "defines.h"
 #include "Stack.h"
 
 #include <stdlib.h>
@@ -9,6 +10,9 @@
 // Test: Create a stack with a capacity of one
 static MunitResult stack_create_with_capacity_of_one(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(1);
     munit_assert_not_null(stack);
 
@@ -24,6 +28,9 @@ static MunitResult stack_create_with_capacity_of_one(const MunitParameter params
 // Test: Create a stack with a capacity of 10
 static MunitResult stack_create_with_capacity_of_ten(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(10);
     munit_assert_not_null(stack);
 
@@ -39,6 +46,9 @@ static MunitResult stack_create_with_capacity_of_ten(const MunitParameter params
 // Test: Create a stack with a capacity of 100
 static MunitResult stack_create_with_capacity_of_hundred(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(100);
     munit_assert_not_null(stack);
 
@@ -54,6 +64,9 @@ static MunitResult stack_create_with_capacity_of_hundred(const MunitParameter pa
 // Test: Delete a stack with a capacity of one
 static MunitResult stack_delete_with_capacity_of_one(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(1);
     munit_assert_not_null(stack);
 
@@ -66,6 +79,9 @@ static MunitResult stack_delete_with_capacity_of_one(const MunitParameter params
 // Test: Delete a stack with a capacity of 10
 static MunitResult stack_delete_with_capacity_of_ten(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(10);
     munit_assert_not_null(stack);
 
@@ -78,6 +94,9 @@ static MunitResult stack_delete_with_capacity_of_ten(const MunitParameter params
 // Test: Delete a stack with a capacity of 100
 static MunitResult stack_delete_with_capacity_of_hundred(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(100);
     munit_assert_not_null(stack);
 
@@ -90,6 +109,9 @@ static MunitResult stack_delete_with_capacity_of_hundred(const MunitParameter pa
 // Test: Push a value onto an empty stack with a capacity of one
 static MunitResult stack_push_with_capacity_of_one(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(1);
     munit_assert_not_null(stack);
 
@@ -108,6 +130,9 @@ static MunitResult stack_push_with_capacity_of_one(const MunitParameter params[]
 // Test: Push a value onto an empty stack with a capacity of 10
 static MunitResult stack_push_with_capacity_of_ten(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(10);
     munit_assert_not_null(stack);
 
@@ -126,6 +151,9 @@ static MunitResult stack_push_with_capacity_of_ten(const MunitParameter params[]
 // Test: Push a value onto an empty stack with a capacity of 100
 static MunitResult stack_push_with_capacity_of_hundred(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(100);
     munit_assert_not_null(stack);
 
@@ -144,6 +172,9 @@ static MunitResult stack_push_with_capacity_of_hundred(const MunitParameter para
 // Test: Push two values onto an empty stack with a capacity of two
 static MunitResult stack_push_two_values_with_capacity_of_two(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(2);
     munit_assert_not_null(stack);
 
@@ -167,6 +198,9 @@ static MunitResult stack_push_two_values_with_capacity_of_two(const MunitParamet
 // Test: Push two values onto an empty stack with a capacity of ten
 static MunitResult stack_push_two_values_with_capacity_of_ten(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(10);
     munit_assert_not_null(stack);
 
@@ -190,6 +224,9 @@ static MunitResult stack_push_two_values_with_capacity_of_ten(const MunitParamet
 // Test: Push ten values onto an empty stack with a capacity of ten
 static MunitResult stack_push_ten_values_with_capacity_of_ten(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(10);
     munit_assert_not_null(stack);
 
@@ -215,6 +252,9 @@ static MunitResult stack_push_ten_values_with_capacity_of_ten(const MunitParamet
 // Test Push three values onto an empty stack with a capacity of two
 static MunitResult stack_push_three_values_with_capacity_of_two(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(2);
     munit_assert_not_null(stack);
 
@@ -246,6 +286,9 @@ static MunitResult stack_push_three_values_with_capacity_of_two(const MunitParam
 // Test: Push 26 values onto an empty stack with a capacity of 26
 static MunitResult stack_push_26_values_with_capacity_of_26(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(26);
     munit_assert_not_null(stack);
 
@@ -271,6 +314,9 @@ static MunitResult stack_push_26_values_with_capacity_of_26(const MunitParameter
 // Test: Check if stack is empty after creating a stack with a capacity of one
 static MunitResult stack_empty_capacity_of_one(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(1);
     munit_assert_not_null(stack);
 
@@ -284,6 +330,9 @@ static MunitResult stack_empty_capacity_of_one(const MunitParameter params[], vo
 // Test: Check if stack is empty after creating a stack with a capacity of ten
 static MunitResult stack_empty_capacity_of_ten(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(10);
     munit_assert_not_null(stack);
 
@@ -297,6 +346,9 @@ static MunitResult stack_empty_capacity_of_ten(const MunitParameter params[], vo
 // Test: Check if stack is empty after creating a stack with a capacity of one hundred
 static MunitResult stack_empty_capacity_of_one_hundred(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(100);
     munit_assert_not_null(stack);
 
@@ -310,6 +362,9 @@ static MunitResult stack_empty_capacity_of_one_hundred(const MunitParameter para
 // Test: Check if stack is empty after creating a stack with a capacity of one after a push
 static MunitResult stack_empty_capacity_of_one_after_a_push(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(1);
     munit_assert_not_null(stack);
 
@@ -327,6 +382,9 @@ static MunitResult stack_empty_capacity_of_one_after_a_push(const MunitParameter
 // Test: Check if stack is empty after creating a stack with a capacity of ten after one push
 static MunitResult stack_empty_capacity_of_ten_after_one_push(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(10);
     munit_assert_not_null(stack);
 
@@ -343,6 +401,9 @@ static MunitResult stack_empty_capacity_of_ten_after_one_push(const MunitParamet
 // Test: Check if stack is empty after creating a stack with a capacity of one hundred after one push
 static MunitResult stack_empty_capacity_of_one_hundred_after_one_push(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(100);
     munit_assert_not_null(stack);
 
@@ -359,6 +420,9 @@ static MunitResult stack_empty_capacity_of_one_hundred_after_one_push(const Muni
 // Test: Check if full stack of a capacity of one is empty
 static MunitResult stack_empty_full_stack_capacity_of_one(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(1);
     munit_assert_not_null(stack);
 
@@ -375,6 +439,9 @@ static MunitResult stack_empty_full_stack_capacity_of_one(const MunitParameter p
 // Test: Check if full stack of a capacity of ten is empty
 static MunitResult stack_empty_full_stack_capacity_of_ten(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(10);
     munit_assert_not_null(stack);
 
@@ -394,6 +461,9 @@ static MunitResult stack_empty_full_stack_capacity_of_ten(const MunitParameter p
 // Test: Check if full stack of a capacity of one hundred is empty
 static MunitResult stack_empty_full_stack_capacity_of_one_hundred(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(100);
     munit_assert_not_null(stack);
 
@@ -413,6 +483,9 @@ static MunitResult stack_empty_full_stack_capacity_of_one_hundred(const MunitPar
 // Test: Check if empty stack is full of a capacity of one
 static MunitResult stack_full_empty_stack_capacity_of_one(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(1);
     munit_assert_not_null(stack);
 
@@ -426,6 +499,9 @@ static MunitResult stack_full_empty_stack_capacity_of_one(const MunitParameter p
 // Test: Check if empty stack is full of a capacity of ten
 static MunitResult stack_full_empty_stack_capacity_of_ten(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(10);
     munit_assert_not_null(stack);
 
@@ -439,6 +515,9 @@ static MunitResult stack_full_empty_stack_capacity_of_ten(const MunitParameter p
 // Test: Check if empty stack is full of a capacity of one hundred
 static MunitResult stack_full_empty_stack_capacity_of_one_hundred(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(100);
     munit_assert_not_null(stack);
 
@@ -452,6 +531,9 @@ static MunitResult stack_full_empty_stack_capacity_of_one_hundred(const MunitPar
 // Test: Check if full stack of a capacity of one is full
 static MunitResult stack_full_full_stack_capacity_of_one(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(1);
     munit_assert_not_null(stack);
 
@@ -468,6 +550,9 @@ static MunitResult stack_full_full_stack_capacity_of_one(const MunitParameter pa
 // Test: Check if full stack of a capacity of ten is full
 static MunitResult stack_full_full_stack_capacity_of_ten(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(10);
     munit_assert_not_null(stack);
 
@@ -487,6 +572,9 @@ static MunitResult stack_full_full_stack_capacity_of_ten(const MunitParameter pa
 // Test: Check if full stack of a capacity of one hundred is full
 static MunitResult stack_full_full_stack_capacity_of_one_hundred(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(100);
     munit_assert_not_null(stack);
 
@@ -506,6 +594,9 @@ static MunitResult stack_full_full_stack_capacity_of_one_hundred(const MunitPara
 // Test: Check if a almost full stack of a capacity of ten is full
 static MunitResult stack_full_almost_full_stack_capacity_of_ten(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(10);
     munit_assert_not_null(stack);
 
@@ -525,6 +616,9 @@ static MunitResult stack_full_almost_full_stack_capacity_of_ten(const MunitParam
 // Test: Check if a almost full stack of a capacity of one hundred is full
 static MunitResult stack_full_almost_full_stack_capacity_of_one_hundred(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(100);
     munit_assert_not_null(stack);
 
@@ -544,6 +638,9 @@ static MunitResult stack_full_almost_full_stack_capacity_of_one_hundred(const Mu
 // Test: Stack size of a stack of a capacity of one
 static MunitResult stack_size_stack_capacity_of_one(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(1);
     munit_assert_not_null(stack);
 
@@ -562,6 +659,9 @@ static MunitResult stack_size_stack_capacity_of_one(const MunitParameter params[
 // Test: Stack size of a stack with ten elements
 static MunitResult stack_size_stack_with_ten_elements(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(15);
     munit_assert_not_null(stack);
 
@@ -583,6 +683,9 @@ static MunitResult stack_size_stack_with_ten_elements(const MunitParameter param
 // Test: Stack size of a stack with one hundred elements
 static MunitResult stack_size_stack_with_one_hundred_elements(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(105);
     munit_assert_not_null(stack);
 
@@ -604,6 +707,9 @@ static MunitResult stack_size_stack_with_one_hundred_elements(const MunitParamet
 // Test: Stack size of a full stack of 10 elements
 static MunitResult stack_size_full_stack_of_ten_elements(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(10);
     munit_assert_not_null(stack);
 
@@ -625,6 +731,9 @@ static MunitResult stack_size_full_stack_of_ten_elements(const MunitParameter pa
 // Test: Stack size of a full stack of one hundred elements
 static MunitResult stack_size_full_stack_of_one_hundred_elements(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(100);
     munit_assert_not_null(stack);
 
@@ -646,6 +755,9 @@ static MunitResult stack_size_full_stack_of_one_hundred_elements(const MunitPara
 // Test: Stack pop of a stack of a capacity of one
 static MunitResult stack_pop_stack_capacity_of_one(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(1);
     munit_assert_not_null(stack);
 
@@ -666,6 +778,9 @@ static MunitResult stack_pop_stack_capacity_of_one(const MunitParameter params[]
 // Test: Stack pop of a stack with ten elements
 static MunitResult stack_pop_stack_with_ten_elements(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(15);
     munit_assert_not_null(stack);
 
@@ -689,6 +804,9 @@ static MunitResult stack_pop_stack_with_ten_elements(const MunitParameter params
 // Test: Stack pop of a stack with one hundred elements
 static MunitResult stack_pop_stack_with_one_hundred_elements(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(105);
     munit_assert_not_null(stack);
 
@@ -712,6 +830,9 @@ static MunitResult stack_pop_stack_with_one_hundred_elements(const MunitParamete
 // Test: Stack pop of an empty stack capacity of one
 static MunitResult stack_pop_empty_stack_capacity_of_one(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(1);
     munit_assert_not_null(stack);
 
@@ -726,6 +847,9 @@ static MunitResult stack_pop_empty_stack_capacity_of_one(const MunitParameter pa
 // Test: Stack pop of an empty stack with ten elements
 static MunitResult stack_pop_empty_stack_with_ten_elements(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(15);
     munit_assert_not_null(stack);
 
@@ -740,6 +864,9 @@ static MunitResult stack_pop_empty_stack_with_ten_elements(const MunitParameter 
 // Test: Stack pop of an empty stack with one hundred elements
 static MunitResult stack_pop_empty_stack_with_one_hundred_elements(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     Stack* stack = stack_create(105);
     munit_assert_not_null(stack);
 

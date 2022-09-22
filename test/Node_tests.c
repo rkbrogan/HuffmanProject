@@ -1,5 +1,6 @@
 #include "Node_tests.h"
 
+#include "defines.h"
 #include "Node.h"
 
 #include <stdbool.h>
@@ -11,6 +12,9 @@
 // Test 1: Initialize a node with a symbol and frequency of 0
 static MunitResult node_create_single_node_with_frequency_of_zero(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+ 
     uint8_t symbol = '1';
     uint64_t frequency = 0;
     Node* n = node_create(symbol, frequency);
@@ -27,6 +31,9 @@ static MunitResult node_create_single_node_with_frequency_of_zero(const MunitPar
 // Test 2: Initialize a node with a symbol and frequency of 1
 static MunitResult node_create_single_node_with_frequency_of_one(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     uint8_t symbol = '1';
     uint64_t frequency = 1;
     Node* n = node_create(symbol, frequency);
@@ -44,6 +51,9 @@ static MunitResult node_create_single_node_with_frequency_of_one(const MunitPara
 // Test 3: Initialize a node with a symbol and frequency of 10
 static MunitResult node_create_single_node_with_frequency_of_ten(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     uint8_t symbol = '1';
     uint64_t frequency = 10;
     Node* n = node_create(symbol, frequency);
@@ -60,6 +70,9 @@ static MunitResult node_create_single_node_with_frequency_of_ten(const MunitPara
 // Test 4: Initialize a node with a symbol and frequency of 100
 static MunitResult node_create_single_node_with_frequency_of_hundred(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     uint8_t symbol = '1';
     uint64_t frequency = 100;
     Node* n = node_create(symbol, frequency);
@@ -76,6 +89,9 @@ static MunitResult node_create_single_node_with_frequency_of_hundred(const Munit
 // Test 5: Delete a node with a symbol and frequency of 0
 static MunitResult node_delete_after_creation_with_frequency_of_zero(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     // Arrange
     Node* n = NULL;
     n = node_create('1', 0);
@@ -96,6 +112,9 @@ static MunitResult node_delete_after_creation_with_frequency_of_zero(const Munit
 // Test 6: Delete a node with a symbol and frequency of 1
 static MunitResult node_delete_after_creation_with_frequency_of_one(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     // Arrange
     Node* n = NULL;
     n = node_create('1', 1);
@@ -116,6 +135,9 @@ static MunitResult node_delete_after_creation_with_frequency_of_one(const MunitP
 // Test 7: Delete a node with a symbol and frequency of 10
 static MunitResult node_delete_after_creation_with_frequency_of_ten(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     // Arrange
     Node* n = NULL;
     n = node_create('1', 10);
@@ -136,6 +158,9 @@ static MunitResult node_delete_after_creation_with_frequency_of_ten(const MunitP
 // Test 8: Delete a node with a symbol and frequency of 100
 static MunitResult node_delete_after_creation_with_frequency_of_hundred(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     // Arrange
     Node* n = NULL;
     n = node_create('1', 100);
@@ -156,6 +181,9 @@ static MunitResult node_delete_after_creation_with_frequency_of_hundred(const Mu
 // Test 9: Join two nodes with a symbol and frequency of 0 and 1
 static MunitResult node_join_two_nodes_with_frequency_of_zero_and_one(const MunitParameter params[], void* data)
 {
+    UNUSED(params);
+    UNUSED(data);
+
     // Arrange
     // Set up n1
     uint32_t n1_symbol = '1';
