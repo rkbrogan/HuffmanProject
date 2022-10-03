@@ -174,21 +174,6 @@ static MunitResult pq_empty_capacity_of_hundred(const MunitParameter params[], v
 
     return MUNIT_OK;
 }
-// TODO: Remove this test
-// Test 12: Check if PriorityQueue is full with capacity of 0
-static MunitResult pq_full_capacity_of_zero(const MunitParameter params[], void* data)
-{
-    UNUSED(params);
-    UNUSED(data);
-
-    // PriorityQueue* pq = pq_create(0);
-
-    // munit_assert_true(pq_isFull(pq));
-
-    // pq_delete(&pq);
-
-    return MUNIT_OK;
-}
 
 // Test 13: Check if PriorityQueue is full with capacity of 1
 static MunitResult pq_full_capacity_of_one(const MunitParameter params[], void* data)
@@ -438,7 +423,6 @@ MunitTest priorityQueue_tests[] =
     TEST(pq_empty_capacity_of_one),
     TEST(pq_empty_capacity_of_ten),
     TEST(pq_empty_capacity_of_hundred),
-    TEST(pq_full_capacity_of_zero),
     TEST(pq_full_capacity_of_one),
     TEST(pq_full_capacity_of_ten),
     TEST(pq_full_capacity_of_hundred),

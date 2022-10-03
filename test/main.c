@@ -24,6 +24,7 @@
 // }
 
 #include "Code_tests.h"
+#include "IO_tests.h"
 #include "Node_tests.h"
 #include "PriorityQueue_tests.h"
 #include "Stack_tests.h"
@@ -41,6 +42,7 @@ static MunitSuite sub_suites[] = {
  {"PriorityQueue ", priorityQueue_tests, NULL, 1, MUNIT_SUITE_OPTION_NONE},
  {"Stack ", stack_tests, NULL, 1, MUNIT_SUITE_OPTION_NONE},
  {"Code ", code_tests, NULL, 1, MUNIT_SUITE_OPTION_NONE},
+ {"IO ", io_tests, NULL, 1, MUNIT_SUITE_OPTION_NONE},
  {NULL}
 };
 
