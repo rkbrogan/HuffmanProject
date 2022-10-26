@@ -493,6 +493,6 @@ MunitTest code_tests[] =
     TEST(test_code_empty_after_init),
     TEST(test_code_empty_after_push),
     TEST(test_code_print_one_set),
-    TEST(test_code_fibonacci_set_visual),
+    // TEST(test_code_fibonacci_set_visual),
     { NULL, NULL, NULL, NULL, MUNIT_TEST_OPTION_NONE, NULL }
 };
