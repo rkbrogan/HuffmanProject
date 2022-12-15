@@ -63,5 +63,5 @@ Node* node_join(Node* left, Node* right)
  */
  void node_print(Node* node)
  {
-    printf("symbol: %d, frequency %ld", node->symbol, node->frequency);
+    printf("symbol: %d, frequency %llu", node->symbol, node->frequency);
  }

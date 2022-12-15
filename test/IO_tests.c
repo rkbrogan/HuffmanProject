@@ -26,7 +26,7 @@ static MunitResult io_test_linux_read(const MunitParameter params[], void* data)
     return MUNIT_OK;
 }
 
-// Test: Read a file smaller than BLOCK (4 KB)
+// Test: Read a file smaller than BLOCK (3 KB)
 static MunitResult io_read_bytes_3kb(const MunitParameter params[], void* data)
 {
     int inFile = open("./test/test-file-1", O_RDONLY);
@@ -46,7 +46,7 @@ static MunitResult io_read_bytes_3kb(const MunitParameter params[], void* data)
     return MUNIT_OK;
 }
 
-// Test: Write to a file smaller than BLOCK (4 KB)
+// Test: Write to a file smaller than BLOCK (3 KB)
 static MunitResult io_write_bytes_3kb(const MunitParameter params[], void* data)
 {
     // Clear contents of file from previous test execution
@@ -82,6 +82,8 @@ static MunitResult io_write_bytes_3kb(const MunitParameter params[], void* data)
 
     return MUNIT_OK;
 }
+
+// TODO: Write tests with wonky numbers
 
 
 /**************************************************************/
