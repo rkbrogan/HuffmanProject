@@ -31,6 +31,7 @@ static MunitResult io_read_bytes_3kb(const MunitParameter params[], void* data)
 {
     int inFile = open("./test/test-file-1", O_RDONLY);
 
+    // int inFile = open("./test/bifFile.dat", O_RDONLY);
     int three_kb = 3 * 1024;
     int one_kb = 1024;
 
@@ -83,6 +84,54 @@ static MunitResult io_write_bytes_3kb(const MunitParameter params[], void* data)
     return MUNIT_OK;
 }
 
+// Test: Read a bit from file
+static MunitResult io_read_a_bit(const MunitParameter params[], void* data)
+{
+    int inFile = open("./test/test-file-1", O_RDONLY);
+
+    munit_assert_int(inFile, >, 0);
+
+    // See if we can read a bit
+    uint8_t bit;
+    bool status = read_bit(inFile, &bit);
+    munit_assert_true(status);
+    munit_assert_int(bit, ==, 0);
+
+    status = read_bit(inFile, &bit);
+    munit_assert_true(status);
+    munit_assert_int(bit, ==, 0);
+
+    status = read_bit(inFile, &bit);
+    munit_assert_true(status);  
+    munit_assert_int(bit, ==, 0);
+
+    status = read_bit(inFile, &bit);
+    munit_assert_true(status); 
+    munit_assert_int(bit, ==, 1);
+
+    munit_assert_int(close(inFile), ==, 0);
+
+    return MUNIT_OK;
+}
+
+// Test: Read multiple bits from file
+static MunitResult io_read_multiple_bits(const MunitParameter params[], void* data)
+{
+    int inFile = open("./test/test-file-1", O_RDONLY);
+
+    // Loop and read bits
+    uint8_t bit;
+    bool status = true;
+    int i = 0;
+    while (status)
+    {
+        status = read_bit(inFile, &bit);
+        i++;
+    }
+
+    munit_assert_int(close(inFile), ==, 0);
+    return MUNIT_OK;
+}
 // TODO: Write tests with wonky numbers
 
 
@@ -93,5 +142,7 @@ MunitTest io_tests[] = {
     TEST(io_test_linux_read),
     TEST(io_read_bytes_3kb),
     TEST(io_write_bytes_3kb),
+    TEST(io_read_a_bit),
+    // TEST(io_read_multiple_bits),
     {NULL, NULL, NULL, NULL, MUNIT_TEST_OPTION_NONE, NULL}
 };

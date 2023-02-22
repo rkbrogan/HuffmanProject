@@ -3,6 +3,8 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <errno.h>
+#include <string.h>
 
 // TODO: Find out what to do with these
 // extern bytes_read;
@@ -18,6 +20,8 @@ int read_bytes(int infile, uint8_t *buf, int nbytes)
     {
         // Try to read remaining bytes
         n = read(infile, &buf[n], nbytes);
+        // char* s = strerror(errno);
+        // printf("%s", s);
 
         // Adjust remaining amount and update bytes read
         nbytes -= n;
@@ -66,6 +70,11 @@ bool read_bit(int infile, uint8_t *bit)
         
         status = bytesRead == 0;
     }
+    else {
+        bytesRead = read_bytes(infile, buffer, BLOCK);
+        
+        status = bytesRead != 0;
+    }
     
     int bufferByteIndex = bitIndex / 8;
     int bufferBitIndex = bitIndex % 8;
@@ -78,8 +87,7 @@ bool read_bit(int infile, uint8_t *bit)
 
     bitIndex++;
 
-
-    return false;
+    return status;
 }
 
 void write_code(int outfile, Code* c)
