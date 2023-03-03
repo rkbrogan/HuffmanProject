@@ -62,20 +62,10 @@ bool read_bit(int infile, uint8_t *bit)
     static int bitIndex = 0;
     int bytesRead = 0;
 
-    // TODO: Need to figure out last iteration where bytes_read isn't performed
+    // TODO: Need to utilize call bytesRead = read_bytes(infile, buffer, BLOCK); status = bytesRead == 0 || != 0
 
-    if (bitIndex % BLOCK)
-    {
-        bytesRead = read_bytes(infile, buffer, BLOCK);
-        
-        status = bytesRead == 0;
-    }
-    else {
-        bytesRead = read_bytes(infile, buffer, BLOCK);
-        
-        status = bytesRead != 0;
-    }
-    
+
+    // Handle bit 
     int bufferByteIndex = bitIndex / 8;
     int bufferBitIndex = bitIndex % 8;
 
@@ -87,6 +77,7 @@ bool read_bit(int infile, uint8_t *bit)
 
     bitIndex++;
 
+    // Return if there are more bits to be read or not.
     return status;
 }
 
