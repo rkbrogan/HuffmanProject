@@ -205,6 +205,8 @@ static MunitResult io_read_first_byte_implicit(const MunitParameter params[], vo
 
     munit_assert_int(close(inFile), ==, 0);
 
+    reset_buffer();
+
     return MUNIT_OK;
 }
 
@@ -215,7 +217,10 @@ void read_n_bits(int n, int inFile)
     {
         uint8_t bit;
         (void)read_bit(inFile, &bit);
+        printf("%d", bit);
     }
+
+    printf("\n");
 }
 
 

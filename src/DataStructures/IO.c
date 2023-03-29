@@ -55,6 +55,8 @@ bool read_bit(int infile, uint8_t *bit)
 {
     bool status = true;
 
+    static uint8_t bufferIndex = 0;
+
     // Static buffer for read_bit and write_bit (to pass to read bytes)
     static uint8_t buffer[BLOCK];
 
