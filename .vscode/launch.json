@@ -5,13 +5,29 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "gdb",
+            "type": "lldb",
             "request": "launch",
-            "name": "Launch Program",
-            "target": "${workspaceFolder}/bin/huff_test_runner",
-            "cwd": "${workspaceFolder}",
-            "valuesFormatting": "parseText"
+            "name": "Launch",
+            "program": "${workspaceFolder}/bin/huff_test_runner",
+            "args": [],
+            "cwd": "${workspaceFolder}"
         },
+        // {
+        //     "type": "gdb",
+        //     "request": "launch",
+        //     "name": "Launch Program",
+        //     "target": "./bin/huff_test_runner",
+        //     "cwd": "${workspaceRoot}",
+        //     "valuesFormatting": "parseText"
+        // },
+        // {
+        //     "type": "gdb",
+        //     "request": "launch",
+        //     "name": "Launch Program",
+        //     "target": "${workspaceFolder}/bin/huff_test_runner",
+        //     "cwd": "${workspaceFolder}",
+        //     "valuesFormatting": "parseText"
+        // },
         // {
         //     "type": "gdb",
         //     "request": "launch",

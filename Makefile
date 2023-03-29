@@ -45,7 +45,7 @@ TEST_WARNS := -Wno-unused-parameter
 TEST_FLAGS := -DMUNIT_TEST_NAME_LEN=60 -DMUNIT_NO_FORK
 
 # Flags for compiling
-CFLAGS := -O3 $(STD) $(STACK) $(WARNS) -I$(INCDIR)
+CFLAGS := $(STD) $(STACK) $(WARNS) -I$(INCDIR)
 
 # Debug options
 DEBUG := -g3 -DDEBUG=1
