@@ -81,13 +81,15 @@ bool read_bit(int infile, uint8_t *bit)
     {
         // Handle bit 
         int bufferByteIndex = bitIndex / 8;
+
         int bufferBitIndex = bitIndex % 8;
 
+        // Set mask 1000 0000
         uint8_t mask = 0x80;
 
         mask = mask >> bufferBitIndex;
 
-        *bit = (buffer[bufferByteIndex] & mask) >> (7 - bitIndex);
+        *bit = (buffer[bufferByteIndex] & mask) >> (7 - (bitIndex % 8));
 
         assert(*bit == 1 || *bit == 0);
 
